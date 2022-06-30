@@ -1,5 +1,10 @@
 package com.intiFormation.entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+
+@Entity
 public class Utilisateur {
 
 	private int id;
@@ -8,6 +13,7 @@ public class Utilisateur {
 	private String adresseMail;
 	private String login;
 	private String password;
+	private List<Role> roles;
 
 	
 	
@@ -16,6 +22,22 @@ public class Utilisateur {
 	}
 	
 	
+	
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+
+
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}
