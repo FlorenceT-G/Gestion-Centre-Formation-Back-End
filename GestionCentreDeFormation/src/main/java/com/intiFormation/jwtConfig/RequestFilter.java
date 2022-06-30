@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.aec.service.CustomUserDetailsService;
+import com.intiFormation.service.CustomUserDetailsService;
 
 
 @Component
