@@ -52,11 +52,11 @@ public class Utilisateur {
 	public void setAdresseMail(String adresseMail) {
 		this.adresseMail = adresseMail;
 	}
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setLogin(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
