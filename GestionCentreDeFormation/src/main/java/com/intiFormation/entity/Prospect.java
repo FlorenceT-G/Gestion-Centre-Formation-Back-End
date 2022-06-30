@@ -2,23 +2,33 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Prospect {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idProspect;
 	private String nom;
 	private String prenom;
 	private String email;
 	private long numTel;
+	
+	@ManyToOne
+	@JoinColumn(name="idContact")
 	private List<Contact> contacts; 
 	
-	
-	
-	
-	public int getId() {
-		return id;
+	public int getIdProspect() {
+		return idProspect;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdProspect(int idProspect) {
+		this.idProspect = idProspect;
 	}
 	public String getNom() {
 		return nom;

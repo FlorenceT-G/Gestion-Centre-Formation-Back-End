@@ -1,38 +1,37 @@
 package com.intiFormation.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Utilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+	private int idUtilisateur;
 	private String nom;
 	private String prenom;
 	private String adresseMail;
 	private String username;
 	private String password;
 	
-	@OneToMany
-	@JoinColumn(name="idRole")
+	@OneToMany(mappedBy="utilisateurs")
 	private Role role;
 	
 	public Utilisateur() {
 		super();
 	}
-	
-	
-	public int getId() {
-		return id;
+
+	public int getIdUtilisateur() {
+		return idUtilisateur;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
 	}
 	public String getNom() {
 		return nom;

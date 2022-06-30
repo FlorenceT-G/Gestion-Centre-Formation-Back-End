@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -24,7 +25,9 @@ public class Formation {
 	private int cout;
 	
 	@ManyToMany
-	@JoinColumn(name="idParticipant")
+	@JoinTable(name="T_Formation_Participant",
+	joinColumns = @JoinColumn(name="idFormation"),
+	inverseJoinColumns = @JoinColumn(name="idParticipant"))	
 	private List<Participant> listeParticipants;
 	
 	@OneToMany(mappedBy="listeFormations")

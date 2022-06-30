@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,9 +20,9 @@ public class Role {
 	private String libRole;
 	private String description;
 	
-	@ManyToMany(mappedBy="role")
+	@ManyToOne
+	@JoinColumn(name="idUtilisateur")
 	private List<Utilisateur> utilisateurs;
-	
 	
 	public int getIdRole() {
 		return idRole;
@@ -44,7 +45,5 @@ public class Role {
 	public Role() {
 		super();
 	}
-	
-	
 	
 }

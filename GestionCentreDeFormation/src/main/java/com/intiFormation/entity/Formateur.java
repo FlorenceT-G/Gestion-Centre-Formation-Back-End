@@ -33,12 +33,8 @@ public class Formateur extends Utilisateur {
 		this.listeFormations = listeFormations;
 	}
 	
-	
-	
 	public Formateur() {
 		super();
 	}
-	
-
 
 }

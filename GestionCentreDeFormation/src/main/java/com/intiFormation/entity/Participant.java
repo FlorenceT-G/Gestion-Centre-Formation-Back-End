@@ -17,12 +17,11 @@ public class Participant extends Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idParticipant;
 	
-	@ManyToMany
-	@JoinColumn(name="idPaiement")
+	@ManyToMany(mappedBy="listeParticipants")
 	private List<Formation> listeFormations;
 	
 	@ManyToOne
-	@JoinColumn(name="idRole")
+	@JoinColumn(name="idRelance")
 	private List<Relance> relances;
 	
 	@ManyToOne
