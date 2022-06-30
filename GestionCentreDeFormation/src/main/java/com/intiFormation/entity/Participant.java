@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,12 +17,16 @@ public class Participant extends Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idParticipant;
 	
-	@ManyToOne
-	@JoinColumn(name="idParticipant")
-
+	@ManyToMany
+	@JoinColumn(name="idPaiement")
 	private List<Formation> listeFormations;
 	
+	@ManyToOne
+	@JoinColumn(name="idRole")
 	private List<Relance> relances;
+	
+	@ManyToOne
+	@JoinColumn(name="idPaiement")
 	private List<Paiement> paiements;
 	
 	

@@ -14,12 +14,10 @@ public class Relance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRole;
 	
-	@OneToMany
-	@JoinColumn(name="idParticipant")
+	@OneToMany(mappedBy="relances")
 	private Participant participant;
 	
-	@OneToMany
-	@JoinColumn(name="idAssistant")
+	@OneToMany(mappedBy="relances")
 	private Assistant assistant;
 	
 	public Relance() {

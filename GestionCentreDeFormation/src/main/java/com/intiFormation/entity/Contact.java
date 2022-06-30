@@ -7,10 +7,9 @@ public class Contact {
 	private int id;
 	private String compteRendu;
 	private LocalDate dateContact;
+	
 	private Prospect prospect;
 	private Commercial commercial;
-	
-	
 	
 	public int getId() {
 		return id;

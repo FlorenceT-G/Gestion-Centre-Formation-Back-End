@@ -4,26 +4,37 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Formation {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idFormation;
 	private String libFormation;
 	private String description;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	private int cout;
+	
+	@ManyToMany
+	@JoinColumn(name="idParticipant")
 	private List<Participant> listeParticipants;
+	
+	@OneToMany(mappedBy="listeFormations")
 	private Formateur formateur;
 	
-	
-	
-	public int getId() {
-		return id;
+	public int getIdFormation() {
+		return idFormation;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdFormation(int idFormation) {
+		this.idFormation = idFormation;
 	}
 	public String getLibFormation() {
 		return libFormation;
