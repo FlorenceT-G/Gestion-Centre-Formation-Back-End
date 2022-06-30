@@ -55,16 +55,19 @@ public class Utilisateur {
 	public String getUsername() {
 		return username;
 	}
-	public void setLogin(String username) {
-		this.username = username;
-	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }
