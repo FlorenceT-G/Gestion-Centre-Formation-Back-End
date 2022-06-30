@@ -3,14 +3,22 @@ package com.intiFormation.entity;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Paiement {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPaiement;
 	private LocalDate datePaiement;
 	private int montant;
 	private int reste;
+	
+	@OneToMany(mappedBy="paiements")
 	private Participant participant;
 	
 	
