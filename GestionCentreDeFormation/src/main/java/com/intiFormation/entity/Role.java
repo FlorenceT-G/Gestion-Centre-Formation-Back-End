@@ -3,16 +3,24 @@ package com.intiFormation.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Role {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRole;
 	private String libRole;
 	private String description;
+	
+	@ManyToMany(mappedBy="role")
 	private List<Utilisateur> utilisateurs;
-	
-	
 	
 	
 	public int getIdRole() {
@@ -32,16 +40,6 @@ public class Role {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	
-	
-	
-	public List<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
-	}
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
 	}
 	public Role() {
 		super();

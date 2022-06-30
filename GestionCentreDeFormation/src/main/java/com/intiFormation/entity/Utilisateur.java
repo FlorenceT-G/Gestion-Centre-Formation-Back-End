@@ -1,43 +1,33 @@
 package com.intiFormation.entity;
 
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
-import javax.persistence.Entity;
-
-@Entity
 public class Utilisateur {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	private String nom;
 	private String prenom;
 	private String adresseMail;
-	private String login;
+	private String username;
 	private String password;
-	private List<Role> roles;
-
 	
+	@OneToMany
+	@JoinColumn(name="idRole")
+	private Role role;
 	
 	public Utilisateur() {
 		super();
 	}
 	
 	
-	
-	
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-
-
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
-
-
-
 	public int getId() {
 		return id;
 	}
@@ -62,11 +52,8 @@ public class Utilisateur {
 	public void setAdresseMail(String adresseMail) {
 		this.adresseMail = adresseMail;
 	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
+	public String getUsername() {
+		return username;
 	}
 	public String getPassword() {
 		return password;
@@ -74,7 +61,13 @@ public class Utilisateur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }

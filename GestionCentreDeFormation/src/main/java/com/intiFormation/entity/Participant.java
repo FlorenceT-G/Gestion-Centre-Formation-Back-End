@@ -2,19 +2,34 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
-public class Participant extends Utilisateur{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-	private int id;
+@Entity
+public class Participant extends Utilisateur {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idParticipant;
+	
+	@ManyToOne
+	@JoinColumn(name="idParticipant")
+
 	private List<Formation> listeFormations;
+	
 	private List<Relance> relances;
 	private List<Paiement> paiements;
 	
 	
-	public int getId() {
-		return id;
+	public int getIdParticipant() {
+		return idParticipant;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdParticipant(int idParticipant) {
+		this.idParticipant = idParticipant;
 	}
 	public List<Formation> getListeFormations() {
 		return listeFormations;
@@ -40,8 +55,5 @@ public class Participant extends Utilisateur{
 		super();
 	}
 	
-	
-	
-	
-	
+
 }
