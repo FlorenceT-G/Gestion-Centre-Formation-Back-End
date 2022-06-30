@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Role {
@@ -20,18 +22,29 @@ public class Role {
 	@ManyToMany(mappedBy="role")
 	private List<Utilisateur> utilisateurs;
 	
+	
+	public int getIdRole() {
+		return idRole;
+	}
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
+	}
+	public String getLibRole() {
+		return libRole;
+	}
+	public void setLibRole(String libRole) {
+		this.libRole = libRole;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Role() {
 		super();
 	}
 	
-	public int getIdRole() { return idRole; }
-	public String getLibRole() { return libRole; }
-	public String getDescription() { return description; }
-	public List<Utilisateur> getUtilisateurs() { return utilisateurs; }
 	
-	public void setIdRole(int idRole) { this.idRole = idRole; }
-	public void setLibRole(String libRole) { this.libRole = libRole; }
-	public void setDescription(String description) { this.description = description; }
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) { this.utilisateurs = utilisateurs; }		
 	
 }
