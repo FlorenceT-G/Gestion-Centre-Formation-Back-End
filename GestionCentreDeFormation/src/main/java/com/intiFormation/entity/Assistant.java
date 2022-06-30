@@ -2,17 +2,25 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Assistant extends Utilisateur {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idAssistant;
+	
 	private List<Relance> relances;
 	
-	
-	public int getId() {
-		return id;
+	public int getIdAssistant() {
+		return idAssistant;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdAssistant(int idAssistant) {
+		this.idAssistant = idAssistant;
 	}
 	public List<Relance> getRelances() {
 		return relances;
