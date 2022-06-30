@@ -14,29 +14,17 @@ public class Utilisateur {
 	private String login;
 	private String password;
 	private List<Role> roles;
-
-	
 	
 	public Utilisateur() {
 		super();
 	}
 	
-	
-	
-	
 	public List<Role> getRoles() {
 		return roles;
 	}
-
-
-
-
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
-
-
 
 	public int getId() {
 		return id;
@@ -74,7 +62,4 @@ public class Utilisateur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
 }

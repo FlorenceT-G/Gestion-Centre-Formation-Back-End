@@ -11,10 +11,7 @@ public class Role {
 	private String libRole;
 	private String description;
 	private List<Utilisateur> utilisateurs;
-	
-	
-	
-	
+
 	public int getIdRole() {
 		return idRole;
 	}
