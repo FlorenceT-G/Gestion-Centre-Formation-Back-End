@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.intiFormation.Dao.IParticipantDao;
 import com.intiFormation.entity.Participant;
 
-
-
 @Service
 public class ParticipantService implements IParticipantService {
 	

@@ -64,20 +64,18 @@ public class FormationController {
 	
 	@GetMapping("/formation/{id}")
 	public Formation afficherFormation(int id) {
-		Formation f = ftionService.selectById(id);
-		return f;
+		return ftionService.selectById(id).get();
 	}
 	
 	@GetMapping("/formationParticipant/{id}")
-	public Formation afficherFormationByParticipant(int id) {
-		Formation f = ftionService.selectByIdParticipant(id);
+	public List<Formation> afficherFormationByParticipant(int id) {
+		List<Formation> f = ftionService.selectByIdParticipant(id);
 		return f;
 	}
 	
 	@GetMapping("/formationFormateur/{id}")
-	public Formation afficherFormationByFormateur(int id) {
-		Formation f = ftionService.selectByIdFormateur(id);
-		return f;
+	public List<Formation> afficherFormationByFormateur(int id) {
+		return ftionService.selectByIdFormateur(id);
 	}
 	
 }

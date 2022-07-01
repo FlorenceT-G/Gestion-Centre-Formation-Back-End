@@ -1,6 +1,7 @@
 package com.intiFormation.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.intiFormation.entity.Formation;
 
@@ -9,9 +10,9 @@ public interface IFormationService {
 	public void ajouter(Formation f);
 	public void supprimer(int id);
 	
-	public Formation selectById(int id);
-	public Formation selectByIdParticipant(int id);
-	public Formation selectByIdFormateur(int id);
+	public Optional<Formation> selectById(int id);
+	public List<Formation> selectByIdParticipant(int id);
+	public List<Formation> selectByIdFormateur(int id);
 	public List<Formation> selectAll();
 	
 }

@@ -1,6 +1,7 @@
 package com.intiFormation.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,20 +23,20 @@ public class FormationService implements IFormationService{
 		ftionDao.deleteById(id);
 	}
 	
-	public Formation selectById(int id) {
-		return ftionDao.getById(id);
+	public Optional<Formation> selectById(int id) {
+		return ftionDao.findById(id);
 	}
 	
-	public Formation selectByIdParticipant(int id) {
-		return ftionDao.getByParticipant_idParticipant(id);
+	public List<Formation> selectByIdParticipant(int id) {
+		return ftionDao.findByListeParticipants_idParticipant(id);
 	}
 	
-	public Formation selectByIdFormateur(int id) {
-		return ftionDao.getByFormateur_idFormateur(id);
+	public List<Formation> selectByIdFormateur(int id) {
+		return ftionDao.findByFormateur_idFormateur(id);
 	}
 	
 	public List<Formation> selectAll() {
-		return ftionDao.getAll();
+		return ftionDao.findAll();
 	}
 	
 }

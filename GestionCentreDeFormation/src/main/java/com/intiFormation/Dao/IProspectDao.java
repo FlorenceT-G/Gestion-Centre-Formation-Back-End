@@ -1,6 +1,7 @@
 package com.intiFormation.Dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,9 +12,9 @@ public interface IProspectDao extends JpaRepository<Prospect, Integer>{
 	
 	public List<Prospect> findByNom(String nom);
 	
-	public Prospect findByEmail(String email);
+	public Optional<Prospect> findByEmail(String email);
 	
-	public Prospect findByNumTel(long numTel);
+	public Optional<Prospect> findByNumTel(long numTel);
 	
 
 }

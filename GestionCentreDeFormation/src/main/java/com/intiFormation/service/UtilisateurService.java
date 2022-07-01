@@ -36,7 +36,7 @@ public class UtilisateurService implements IUtilisateurService {
 	}
 	
 	public List<Utilisateur> chercherParRole(int idRole) {
-		return utilisateurDao.findByIdRole(idRole);
+		return utilisateurDao.findByRole_idRole(idRole);
 	}
 
 }
