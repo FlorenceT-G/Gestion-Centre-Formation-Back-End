@@ -32,6 +32,7 @@ public class RelanceService implements IRelanceService{
 	public List<Relance> GetByAssistant(Integer id)
 	{ return IrDao.findByAssistant_idAssistant(id);}
 	
-	
+	public List<Relance> GetAll()
+	{	return  IrDao.findAll();}
 
 }
