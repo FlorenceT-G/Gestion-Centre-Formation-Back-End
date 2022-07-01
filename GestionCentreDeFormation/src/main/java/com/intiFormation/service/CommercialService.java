@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.intiFormation.dao.ICommercialDao;
+import com.intiFormation.Dao.ICommercialDao;
 import com.intiFormation.entity.Commercial;
 
 @Service
