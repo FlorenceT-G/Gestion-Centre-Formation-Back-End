@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.Dao.IFormationDao;
+import com.intiFormation.dao.IFormationDao;
 import com.intiFormation.entity.Formation;
 
 @Service
@@ -28,11 +28,11 @@ public class FormationService implements IFormationService{
 	}
 	
 	public List<Formation> selectByIdParticipant(int id) {
-		return ftionDao.findByListeParticipants_idParticipant(id);
+		return ftionDao.findByListeParticipants_idUtilisateur(id);
 	}
 	
 	public List<Formation> selectByIdFormateur(int id) {
-		return ftionDao.findByFormateur_idFormateur(id);
+		return ftionDao.findByFormateur_idUtilisateur(id);
 	}
 	
 	public List<Formation> selectAll() {

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.Dao.ICommercialDao;
+import com.intiFormation.dao.ICommercialDao;
 import com.intiFormation.entity.Commercial;
 
 @Service

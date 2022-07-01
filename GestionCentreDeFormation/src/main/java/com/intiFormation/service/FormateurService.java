@@ -3,7 +3,7 @@ package com.intiFormation.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.Dao.IFormateurDao;
+import com.intiFormation.dao.IFormateurDao;
 import com.intiFormation.entity.Formateur;
 
 @Service

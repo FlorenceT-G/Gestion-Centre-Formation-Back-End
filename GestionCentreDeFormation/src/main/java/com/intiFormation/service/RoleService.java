@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.Dao.IRoleDao;
+import com.intiFormation.dao.IRoleDao;
 import com.intiFormation.entity.Role;
 
 @Service
