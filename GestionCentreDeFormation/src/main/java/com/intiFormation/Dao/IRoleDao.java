@@ -7,6 +7,6 @@ import com.intiFormation.entity.Role;
 
 public interface IRoleDao extends JpaRepository<Role, Integer>{
 	
-	public Optional<Role> findByLibrole(String libRole);
+	public Optional<Role> findByLibRole(String libRole);
 
 }

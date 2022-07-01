@@ -32,7 +32,7 @@ public class RoleService implements IRoleService {
 	}
 	
 	public Optional<Role> chercherParLibRole(String libRole) {
-		return roleDao.findByLibrole(libRole);
+		return roleDao.findByLibRole(libRole);
 	}
 
 }

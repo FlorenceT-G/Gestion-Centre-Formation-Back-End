@@ -10,6 +10,6 @@ import com.intiFormation.entity.Utilisateur;
 public interface IUtilisateurDao extends JpaRepository<Utilisateur, Integer> {
 
 	public Optional<Utilisateur> findByUsername(String username);
-	public List<Utilisateur> findByIdRole(int idRole); // à tester
+	public List<Utilisateur> findByRole_idRole(int idRole); // à tester
 
 }

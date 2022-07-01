@@ -3,8 +3,8 @@ package com.intiFormation.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IAssistantDao;
 import com.intiFormation.entity.Assistant;

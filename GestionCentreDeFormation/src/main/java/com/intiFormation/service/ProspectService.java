@@ -28,10 +28,10 @@ public class ProspectService implements IProspectService {
 	{	return  IpDao.findAll();}
 	
 	public Prospect SelectByEmail(String mail)
-	{ return IpDao.findByEmail(mail);}
+	{ return IpDao.findByEmail(mail).get();}
 	
 	public Prospect SelectByNum(Long num)
-	{ return IpDao.findByNumTel(num);}
+	{ return IpDao.findByNumTel(num).get();}
 	
 	public List<Prospect> SelectByNom(String Nom)
 	{ return IpDao.findByNom(Nom);}
