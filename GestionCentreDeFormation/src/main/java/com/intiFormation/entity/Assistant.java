@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Assistant extends Utilisateur {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idAssistant;
 	@OneToMany(mappedBy = "assistant")
 	private List<Relance> relances;
 
