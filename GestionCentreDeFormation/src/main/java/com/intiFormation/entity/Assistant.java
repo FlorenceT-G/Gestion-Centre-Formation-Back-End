@@ -15,6 +15,9 @@ public class Assistant extends Utilisateur {
 
 	@OneToMany(mappedBy = "assistant")
 	private List<Relance> relances;
+	
+	
+	
 
 	public List<Relance> getRelances() {
 		return relances;
