@@ -69,8 +69,7 @@ public class FormationController {
 	
 	@GetMapping("/formationParticipant/{id}")
 	public List<Formation> afficherFormationByParticipant(int id) {
-		List<Formation> f = ftionService.selectByIdParticipant(id);
-		return f;
+		return ftionService.selectByIdParticipant(id);
 	}
 	
 	@GetMapping("/formationFormateur/{id}")
