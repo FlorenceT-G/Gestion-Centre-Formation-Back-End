@@ -3,7 +3,7 @@ package com.intiFormation.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import com.intiFormation.Dao.IProspectDao;
+import com.intiFormation.dao.IProspectDao;
 import com.intiFormation.entity.Prospect;
 
 
