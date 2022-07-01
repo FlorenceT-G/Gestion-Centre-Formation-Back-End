@@ -8,16 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Assistant extends Utilisateur {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAssistant;
 	
-	@ManyToOne
-	@JoinColumn(name="idRelance")
+	@OneToMany(mappedBy = "assistant")
 	private List<Relance> relances;
 	
 	public int getIdAssistant() {

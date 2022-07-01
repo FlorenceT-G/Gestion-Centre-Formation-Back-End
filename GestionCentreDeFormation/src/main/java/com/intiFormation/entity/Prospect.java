@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Prospect {
@@ -20,8 +21,7 @@ public class Prospect {
 	private String email;
 	private long numTel;
 	
-	@ManyToOne
-	@JoinColumn(name="idContact")
+	@OneToMany(mappedBy = "prospect")
 	private List<Contact> contacts; 
 	
 	public int getIdProspect() {

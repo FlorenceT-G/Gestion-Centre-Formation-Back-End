@@ -8,16 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Commercial extends Utilisateur {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCommercial;
 	
-	@ManyToOne
-	@JoinColumn(name="idContact")
+	@OneToMany(mappedBy = "commercial")
 	private List<Contact> contacts;
 	
 	public Commercial() {

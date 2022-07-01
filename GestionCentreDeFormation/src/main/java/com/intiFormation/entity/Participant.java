@@ -9,23 +9,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Participant extends Utilisateur {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idParticipant;
 	
 	@ManyToMany(mappedBy="listeParticipants")
 	private List<Formation> listeFormations;
 	
-	@ManyToOne
-	@JoinColumn(name="idRelance")
+	@OneToMany(mappedBy = "participant")
 	private List<Relance> relances;
 	
-	@ManyToOne
-	@JoinColumn(name="idPaiement")
+	@OneToMany(mappedBy = "participant")
 	private List<Paiement> paiements;
 	
 	

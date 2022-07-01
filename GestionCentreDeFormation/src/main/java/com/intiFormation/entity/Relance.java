@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -14,10 +15,12 @@ public class Relance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRelance;
 	
-	@OneToMany(mappedBy="relances")
+	@ManyToOne
+	@JoinColumn(name = "idParticipant")
 	private Participant participant;
 	
-	@OneToMany(mappedBy="relances")
+	@ManyToOne
+	@JoinColumn(name = "idAssistant")
 	private Assistant assistant;
 	
 	public Relance() {
