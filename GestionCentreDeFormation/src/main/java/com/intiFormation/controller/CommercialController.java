@@ -19,18 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.intiFormation.entity.Commercial;
 import com.intiFormation.service.ICommercialService;
 
-@RestController 
-@Transactional
+@RestController
 @RequestMapping("/Admin")
 @CrossOrigin(origins="http://localhost:4200")
 public class CommercialController {
 	
-	
 	@Autowired
 	ICommercialService commercialService;
-	
-	
-	
 	
 	@GetMapping("/commerciaux")
 	public List<Commercial> AfficherAssistant() {

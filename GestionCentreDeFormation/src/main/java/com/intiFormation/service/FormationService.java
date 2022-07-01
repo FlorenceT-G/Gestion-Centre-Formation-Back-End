@@ -13,30 +13,32 @@ import com.intiFormation.entity.Formation;
 public class FormationService implements IFormationService{
 
 	@Autowired
-	IFormationDao ftionDao;
+	IFormationDao formationDao;
 	
 	public void ajouter(Formation f) {
-		ftionDao.save(f);
+		formationDao.save(f);
 	}
 	
 	public void supprimer(int id) {
-		ftionDao.deleteById(id);
+		formationDao.deleteById(id);
 	}
 	
 	public Optional<Formation> selectById(int id) {
-		return ftionDao.findById(id);
+		return formationDao.findById(id);
 	}
 	
 	public List<Formation> selectByIdParticipant(int id) {
-		return ftionDao.findByListeParticipants_idUtilisateur(id);
+		return formationDao.findByListeParticipants_idUtilisateur(id);
 	}
 	
 	public List<Formation> selectByIdFormateur(int id) {
-		return ftionDao.findByFormateur_idUtilisateur(id);
+		return formationDao.findByFormateur_idUtilisateur(id);
 	}
+
+
 	
 	public List<Formation> selectAll() {
-		return ftionDao.findAll();
+		return formationDao.findAll();
 	}
 	
 }

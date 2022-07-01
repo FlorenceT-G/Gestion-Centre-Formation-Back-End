@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formation;
@@ -19,21 +22,26 @@ import com.intiFormation.service.IFormationService;
 public class FormationController {
 
 	@Autowired
-	IFormationService ftionService;
+	IFormationService formationService;
 	
 	@PostMapping("/admin/formation")
-	public void ajoutFormation(Formation f) {
-		ftionService.ajouter(f);
+	public void ajoutFormation(@RequestBody Formation f) {
+		formationService.ajouter(f);
 	}
 	
-	@DeleteMapping("/admin/formation")
-	public void supprimerFormation(int id) {
-		ftionService.supprimer(id);
+	@PutMapping("/admin/formation/{id}")
+	public void modificationFormation(@RequestBody Formation f, @PathVariable("id") int id) {
+		formationService.ajouter(f);
+	}
+	
+	@DeleteMapping("/admin/formation/{id}")
+	public void supprimerFormation(@PathVariable("id") int id) {
+		formationService.supprimer(id);
 	}
 	
 	@GetMapping("/formation")
 	public List<Formation> afficherFormationEnCours() {
-		List<Formation> listeFormations = ftionService.selectAll();
+		List<Formation> listeFormations = formationService.selectAll();
 		List<Formation> listeFormationsEnCours = new ArrayList<>();
 		
 		LocalDate dateNow = LocalDate.now();
@@ -49,7 +57,7 @@ public class FormationController {
 	
 	@GetMapping("/historiqueFormation")
 	public List<Formation> afficherHistoriqueFormation() {
-		List<Formation> listeFormations = ftionService.selectAll();
+		List<Formation> listeFormations = formationService.selectAll();
 		List<Formation> listeHistoriqueFormation = new ArrayList<>();
 		LocalDate dateNow = LocalDate.now();
 		
@@ -63,18 +71,18 @@ public class FormationController {
 	}
 	
 	@GetMapping("/formation/{id}")
-	public Formation afficherFormation(int id) {
-		return ftionService.selectById(id).get();
+	public Formation afficherFormation(@PathVariable("id") int id) {
+		return formationService.selectById(id).get();
 	}
 	
 	@GetMapping("/formationParticipant/{id}")
-	public List<Formation> afficherFormationByParticipant(int id) {
-		return ftionService.selectByIdParticipant(id);
+	public List<Formation> afficherFormationByParticipant(@PathVariable("id") int id) {
+		return formationService.selectByIdParticipant(id);
 	}
 	
 	@GetMapping("/formationFormateur/{id}")
-	public List<Formation> afficherFormationByFormateur(int id) {
-		return ftionService.selectByIdFormateur(id);
+	public List<Formation> afficherFormationByFormateur(@PathVariable("id") int id) {
+		return formationService.selectByIdFormateur(id);
 	}
 	
 }
