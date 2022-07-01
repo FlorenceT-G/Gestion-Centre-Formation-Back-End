@@ -13,21 +13,18 @@ import javax.persistence.OneToMany;
 @Entity
 public class Commercial extends Utilisateur {
 	
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCommercial;
-	
 	@OneToMany(mappedBy = "commercial")
 	private List<Contact> contacts;
 	
 	public Commercial() {
 		super();
 	}
-	
-	public int getIdCommercial() { return idCommercial; }
+
 	public List<Contact> getContacts() { return contacts; }
 
-	public void setIdCommercial(int idCommercial) { this.idCommercial = idCommercial; }
 	public void setContacts(List<Contact> contacts) { this.contacts = contacts;	}
 
 }

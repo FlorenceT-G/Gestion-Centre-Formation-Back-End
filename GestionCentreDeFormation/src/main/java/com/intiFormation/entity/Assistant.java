@@ -12,23 +12,13 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Assistant extends Utilisateur {
-	
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAssistant;
-	
 	@OneToMany(mappedBy = "assistant")
 	private List<Relance> relances;
-	
-	
-	
-	
-	public int getIdAssistant() {
-		return idAssistant;
-	}
-	public void setIdAssistant(int idAssistant) {
-		this.idAssistant = idAssistant;
-	}
+
 	public List<Relance> getRelances() {
 		return relances;
 	}
