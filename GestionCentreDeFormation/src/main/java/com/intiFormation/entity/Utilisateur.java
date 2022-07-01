@@ -38,6 +38,7 @@ public class Utilisateur {
 	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
