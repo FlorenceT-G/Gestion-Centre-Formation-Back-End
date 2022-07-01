@@ -19,21 +19,21 @@ import com.intiFormation.service.IFormationService;
 public class FormationController {
 
 	@Autowired
-	IFormationService ftionService;
+	IFormationService formationService;
 	
 	@PostMapping("/admin/formation")
 	public void ajoutFormation(Formation f) {
-		ftionService.ajouter(f);
+		formationService.ajouter(f);
 	}
 	
 	@DeleteMapping("/admin/formation")
 	public void supprimerFormation(int id) {
-		ftionService.supprimer(id);
+		formationService.supprimer(id);
 	}
 	
 	@GetMapping("/formation")
 	public List<Formation> afficherFormationEnCours() {
-		List<Formation> listeFormations = ftionService.selectAll();
+		List<Formation> listeFormations = formationService.selectAll();
 		List<Formation> listeFormationsEnCours = new ArrayList<>();
 		
 		LocalDate dateNow = LocalDate.now();
@@ -49,7 +49,7 @@ public class FormationController {
 	
 	@GetMapping("/historiqueFormation")
 	public List<Formation> afficherHistoriqueFormation() {
-		List<Formation> listeFormations = ftionService.selectAll();
+		List<Formation> listeFormations = formationService.selectAll();
 		List<Formation> listeHistoriqueFormation = new ArrayList<>();
 		LocalDate dateNow = LocalDate.now();
 		
@@ -64,17 +64,17 @@ public class FormationController {
 	
 	@GetMapping("/formation/{id}")
 	public Formation afficherFormation(int id) {
-		return ftionService.selectById(id).get();
+		return formationService.selectById(id).get();
 	}
 	
 	@GetMapping("/formationParticipant/{id}")
 	public List<Formation> afficherFormationByParticipant(int id) {
-		return ftionService.selectByIdParticipant(id);
+		return formationService.selectByIdParticipant(id);
 	}
 	
 	@GetMapping("/formationFormateur/{id}")
 	public List<Formation> afficherFormationByFormateur(int id) {
-		return ftionService.selectByIdFormateur(id);
+		return formationService.selectByIdFormateur(id);
 	}
 	
 }
