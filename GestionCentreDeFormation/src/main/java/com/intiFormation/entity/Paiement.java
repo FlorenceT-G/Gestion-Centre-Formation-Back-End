@@ -21,7 +21,6 @@ public class Paiement {
 	@OneToMany(mappedBy="paiements")
 	private Participant participant;
 	
-	
 	public int getIdPaiement() {
 		return idPaiement;
 	}

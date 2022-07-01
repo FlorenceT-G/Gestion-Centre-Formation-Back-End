@@ -24,8 +24,7 @@ public class Relance {
 	public Relance() {
 		super();
 	}
-	
-	
+		
 
 	public int getIdRelance() {
 		return idRelance;
@@ -41,6 +40,7 @@ public class Relance {
 
 	public Participant getParticipant() { return participant; }
 	public Assistant getAssistant() { return assistant; }
+
 
 	public void setParticipant(Participant participant) { this.participant = participant; }
 	public void setAssistant(Assistant assistant) { this.assistant = assistant; }

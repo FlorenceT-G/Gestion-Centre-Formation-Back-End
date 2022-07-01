@@ -2,23 +2,38 @@ package com.intiFormation.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Contact {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idContact;
 	private String compteRendu;
 	private LocalDate dateContact;
 	
+	@OneToMany(mappedBy="contacts")
 	private Prospect prospect;
+	
+	@OneToMany(mappedBy="contacts")
 	private Commercial commercial;
 	
+
 	
-	
-	
-	public int getId() {
-		return id;
+
+	public int getIdContact() {
+		return idContact;
+
+
+
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdContact(int idContact) {
+		this.idContact = idContact;
 	}
 	public String getCompteRendu() {
 		return compteRendu;
@@ -49,7 +64,6 @@ public class Contact {
 	public Contact() {
 		super();
 	}
-	
 	
 	
 

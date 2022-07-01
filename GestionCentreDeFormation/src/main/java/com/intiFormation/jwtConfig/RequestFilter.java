@@ -1,5 +1,6 @@
 package com.intiFormation.jwtConfig;
 
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.intiFormation.service.CustomUserDetailsService;
-
 
 @Component
 public class RequestFilter extends OncePerRequestFilter {

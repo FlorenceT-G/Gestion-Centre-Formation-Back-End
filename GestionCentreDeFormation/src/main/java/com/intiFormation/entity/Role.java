@@ -1,16 +1,13 @@
 package com.intiFormation.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="roles")
 public class Role {
 
 	@Id
@@ -18,10 +15,6 @@ public class Role {
 	private int idRole;
 	private String libRole;
 	private String description;
-	
-	@ManyToMany(mappedBy="role")
-	private List<Utilisateur> utilisateurs;
-	
 	
 	public int getIdRole() {
 		return idRole;
@@ -44,7 +37,5 @@ public class Role {
 	public Role() {
 		super();
 	}
-	
-	
 	
 }
