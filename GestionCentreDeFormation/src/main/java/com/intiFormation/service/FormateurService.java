@@ -15,6 +15,7 @@ public class FormateurService implements IFormateurService {
 	IFormateurDao formateurDao;
 	
 	public void ajouter(Formateur f) {
+		System.out.println(f.getNom());
 		formateurDao.save(f);
 	}
 	

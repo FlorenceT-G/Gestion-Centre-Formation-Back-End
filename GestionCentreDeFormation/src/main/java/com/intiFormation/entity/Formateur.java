@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Formateur extends Utilisateur {
 	
@@ -17,6 +19,7 @@ public class Formateur extends Utilisateur {
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idFormateur;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "formateur")
 	private List<Formation> listeFormations;
 	

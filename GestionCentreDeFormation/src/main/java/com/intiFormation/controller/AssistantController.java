@@ -19,14 +19,12 @@ import com.intiFormation.entity.Assistant;
 import com.intiFormation.service.IAssistantService;
 
 @RestController 
-@Transactional
 @RequestMapping("/Admin")
 @CrossOrigin(origins="http://localhost:4200")
 public class AssistantController {
 	
 	@Autowired
 	IAssistantService assistantService;
-	
 	
 	@GetMapping("/assistants")
 	public List<Assistant> AfficherAssistant() {
