@@ -21,7 +21,7 @@ import com.intiFormation.service.IContactService;
 
 @RestController 
 @Transactional
-@RequestMapping("/")
+//@RequestMapping("/")
 @CrossOrigin(origins="http://localhost:4200")
 public class ContactController {
 	
