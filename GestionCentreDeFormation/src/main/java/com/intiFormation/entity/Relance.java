@@ -23,15 +23,28 @@ public class Relance {
 	@JoinColumn(name = "idAssistant")
 	private Assistant assistant;
 	
+	
 	public Relance() {
 		super();
 	}
-	
-	public int getIdRelance() { return idRelance; }
+		
+
+	public int getIdRelance() {
+		return idRelance;
+	}
+
+
+
+	public void setIdRelance(int idRelance) {
+		this.idRelance = idRelance;
+	}
+
+
+
 	public Participant getParticipant() { return participant; }
 	public Assistant getAssistant() { return assistant; }
 
-	public void setIdRelance(int idRelance) { this.idRelance = idRelance; }
+
 	public void setParticipant(Participant participant) { this.participant = participant; }
 	public void setAssistant(Assistant assistant) { this.assistant = assistant; }
 	

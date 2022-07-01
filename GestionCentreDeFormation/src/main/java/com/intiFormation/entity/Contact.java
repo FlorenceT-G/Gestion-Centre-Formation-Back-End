@@ -27,8 +27,14 @@ public class Contact {
 	@JoinColumn(name = "idCommercial")
 	private Commercial commercial;
 	
+
+	
+
 	public int getIdContact() {
 		return idContact;
+
+
+
 	}
 	public void setIdContact(int idContact) {
 		this.idContact = idContact;
