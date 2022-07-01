@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.intiFormation.dao.IContactDao;
+import com.intiFormation.Dao.IContactDao;
 import com.intiFormation.entity.Contact;
 
 public class ContactService implements IContactService {

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -30,7 +31,8 @@ public class Formation {
 	inverseJoinColumns = @JoinColumn(name="idParticipant"))	
 	private List<Participant> listeParticipants;
 	
-	@OneToMany(mappedBy="listeFormations") // Mettre un CascadeType.ALL ou .PERSIST pour affecter formation à formateur
+	@ManyToOne 
+	@JoinColumn(name = "idFormateur") // Mettre un CascadeType.ALL ou .PERSIST pour affecter formation à formateur
 	private Formateur formateur;
 	
 	public int getIdFormation() {

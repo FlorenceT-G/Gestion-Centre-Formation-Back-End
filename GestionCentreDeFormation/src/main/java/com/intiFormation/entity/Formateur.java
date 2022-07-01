@@ -8,16 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Formateur extends Utilisateur {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idFormateur;
 	
-	@ManyToOne
-	@JoinColumn(name="idFormation")
+	@OneToMany(mappedBy = "formateur")
 	private List<Formation> listeFormations;
 	
 	public int getIdFormateur() {

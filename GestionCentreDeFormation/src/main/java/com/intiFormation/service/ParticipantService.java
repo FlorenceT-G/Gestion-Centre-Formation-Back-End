@@ -1,5 +1,7 @@
 package com.intiFormation.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class ParticipantService implements IParticipantService {
 	
 	public Participant SelectById(Integer id)
 	{ return IpDao.findById(id).get();}
+	
+	public List<Participant> GetAll()
+	{	return  IpDao.findAll();}
 	
 	public void Modifier(Participant r)
 	{IpDao.save(r);}
