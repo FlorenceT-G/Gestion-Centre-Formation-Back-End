@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Participant extends Utilisateur {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idParticipant;
 	@ManyToMany(mappedBy="listeParticipants")
 	private List<Formation> listeFormations;
 	

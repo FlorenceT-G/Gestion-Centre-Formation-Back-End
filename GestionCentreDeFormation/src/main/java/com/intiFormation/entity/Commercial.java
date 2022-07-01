@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Commercial extends Utilisateur {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idCommercial;
 	@OneToMany(mappedBy = "commercial")
 	private List<Contact> contacts;
 	

@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Formateur extends Utilisateur {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idFormateur;
 	@OneToMany(mappedBy = "formateur")
 	private List<Formation> listeFormations;
 	
