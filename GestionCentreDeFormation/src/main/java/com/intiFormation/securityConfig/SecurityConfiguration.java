@@ -1,5 +1,4 @@
 package com.intiFormation.securityConfig;
-
 import javax.ws.rs.HttpMethod;
 
 import org.springframework.beans.factory.annotation.Autowired;

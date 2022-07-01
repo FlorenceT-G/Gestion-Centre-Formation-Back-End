@@ -15,13 +15,10 @@ import com.intiFormation.entity.Utilisateur;
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	// --> A modifier IUserService utilisateurService;
+	IUtilisateurService utilisateurService;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		/*
-		 * Pour se connecter à la bdd cette méthode doit appeler une api de JPA
-		*/
 		
 		Optional<Utilisateur> utilisateur = utilisateurService.chercherParUsername(username);
 		

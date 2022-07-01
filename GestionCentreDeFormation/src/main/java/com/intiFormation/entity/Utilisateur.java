@@ -1,14 +1,15 @@
 package com.intiFormation.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="utilisateurs")
 public class Utilisateur {
 
 	@Id
@@ -20,7 +21,8 @@ public class Utilisateur {
 	private String username;
 	private String password;
 	
-	@OneToMany(mappedBy="utilisateurs")
+	@OneToOne
+	@JoinColumn(name="idRole")
 	private Role role;
 	
 	public Utilisateur() {
