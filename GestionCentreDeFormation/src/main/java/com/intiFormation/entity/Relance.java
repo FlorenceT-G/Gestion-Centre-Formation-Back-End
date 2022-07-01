@@ -12,7 +12,7 @@ public class Relance {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idRole;
+	private int idRelance;
 	
 	@OneToMany(mappedBy="relances")
 	private Participant participant;
@@ -20,17 +20,24 @@ public class Relance {
 	@OneToMany(mappedBy="relances")
 	private Assistant assistant;
 	
+	
 	public Relance() {
 		super();
 	}
 	
-	public int getIdRole() {
-		return idRole;
+	
+
+	public int getIdRelance() {
+		return idRelance;
 	}
 
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
+
+
+	public void setIdRelance(int idRelance) {
+		this.idRelance = idRelance;
 	}
+
+
 
 	public Participant getParticipant() { return participant; }
 	public Assistant getAssistant() { return assistant; }

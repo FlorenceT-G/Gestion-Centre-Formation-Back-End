@@ -17,8 +17,11 @@ public class Assistant extends Utilisateur {
 	private int idAssistant;
 	
 	@ManyToOne
-	@JoinColumn(name="idRole")
+	@JoinColumn(name="idRelance")
 	private List<Relance> relances;
+	
+	
+	
 	
 	public int getIdAssistant() {
 		return idAssistant;

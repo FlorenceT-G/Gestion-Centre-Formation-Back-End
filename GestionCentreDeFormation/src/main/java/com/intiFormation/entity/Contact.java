@@ -11,6 +11,9 @@ public class Contact {
 	private Prospect prospect;
 	private Commercial commercial;
 	
+	
+	
+	
 	public int getId() {
 		return id;
 	}
