@@ -1,5 +1,7 @@
 package com.intiFormation.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.intiFormation.Dao.IProspectDao;
 import com.intiFormation.entity.Prospect;
@@ -22,10 +24,16 @@ public class ProspectService implements IProspectService {
 	public void supprimer(int id)
 	{IpDao.deleteById(id);}
 	
+	public List<Prospect> GetAll()
+	{	return  IpDao.findAll();}
+	
 	public Prospect SelectByEmail(String mail)
 	{ return IpDao.findByEmail(mail);}
 	
 	public Prospect SelectByNum(Long num)
 	{ return IpDao.findByNumTel(num);}
+	
+	public List<Prospect> SelectByNom(String Nom)
+	{ return IpDao.findByNom(Nom);}
 
 }

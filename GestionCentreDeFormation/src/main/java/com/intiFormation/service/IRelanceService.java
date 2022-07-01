@@ -17,5 +17,7 @@ public interface IRelanceService {
 	public List<Relance> GetByParticipant(Integer id);
 	
 	public List<Relance> GetByAssistant(Integer id);
+	
+	public List<Relance> GetAll();
 
 }
