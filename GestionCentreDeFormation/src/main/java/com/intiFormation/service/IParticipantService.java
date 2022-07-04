@@ -9,7 +9,7 @@ public interface IParticipantService {
 	
 	public void Ajouter(Participant r);
 	
-	public Participant SelectById(Integer id);
+	public Participant selectById(Integer id);
 	
 	public List<Participant> GetAll();
 	

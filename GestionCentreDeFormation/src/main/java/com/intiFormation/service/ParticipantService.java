@@ -19,8 +19,9 @@ public class ParticipantService implements IParticipantService {
 	public void Ajouter(Participant r)
 	{IpDao.save(r);}
 	
-	public Participant SelectById(Integer id)
-	{ return IpDao.findById(id).get();}
+	public Participant selectById(Integer id) { 
+		return IpDao.findById(id).get();
+	}
 	
 	public List<Participant> GetAll()
 	{	return  IpDao.findAll();}

@@ -24,6 +24,8 @@ public class FormationService implements IFormationService{
 	}
 	
 	public Optional<Formation> selectById(int id) {
+		Optional<Formation> of = formationDao.findById(id);
+		System.out.println(of.get().getLibFormation());
 		return formationDao.findById(id);
 	}
 	
