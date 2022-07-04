@@ -76,7 +76,7 @@ public class ProspectController {
 		Prospect p =  IpService.SelectByEmail(mail);
 		return (p);
 	}
-		
+	
 	@DeleteMapping ("/prospects/{id}")
 	public void supp(@PathVariable("id") int id)
 	{
@@ -89,7 +89,7 @@ public class ProspectController {
 		IpService.Modifier(p);
 	}
 	
-	@GetMapping("/file")	
+	@GetMapping("/csvFile")	
 	public void csvReader(@RequestParam("file") MultipartFile file, HttpSession session) {
 		String filename = file.getOriginalFilename();
 		String path = "C:\\Users\\p.gaillard\\Downloads\\"+filename;
