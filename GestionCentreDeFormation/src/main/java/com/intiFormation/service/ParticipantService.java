@@ -20,9 +20,7 @@ public class ParticipantService implements IParticipantService {
 	{IpDao.save(r);}
 	
 	public Participant selectById(Integer id) { 
-		Participant p = IpDao.findById(id).get();
-		System.out.println(p.getPrenom());
-		return p;
+		return IpDao.findById(id).get();
 	}
 	
 	public List<Participant> GetAll()

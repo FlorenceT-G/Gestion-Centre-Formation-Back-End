@@ -5,6 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,22 +28,17 @@ public class MailController {
 	FormationService fService;
 	
 	@ResponseBody
-	@RequestMapping("/sendmail")
-	public String envoieMail() {
+	@RequestMapping("/sendmail/{idParticipant}/{idFormation}")
+	public String envoieMail(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation) {
 		
-		Participant p = pService.selectById(1);
-		
-		System.out.println(p.getPrenom());
-		
-		Formation f = fService.selectById(1).get();
-		
-		System.out.println(f.getLibFormation());
+		Participant p = pService.selectById(idParticipant);
+		Formation f = fService.selectById(idFormation).get();
 		
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo("tgflorence890@gmail.com");
+		message.setTo(p.getAdresseMail());
 		message.setSubject("Inscription à la formation " + f.getLibFormation());
 		message.setText("Bonjour " + p.getNom() + " " + p.getPrenom() 
-		+ ", \n Merci de votre inscription à la formation " + f.getLibFormation()
+		+ ", \nMerci de votre inscription à la formation " + f.getLibFormation()
 		+ ".\nPour plus de détail rendez-vous sur votre compte !"
 		+ "\n\nCordialement,\nL'équipe de formation.");
 		

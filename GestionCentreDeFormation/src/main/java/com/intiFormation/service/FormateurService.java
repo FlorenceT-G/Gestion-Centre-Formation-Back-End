@@ -28,8 +28,6 @@ public class FormateurService implements IFormateurService {
 	}
 	
 	public Formateur selectById(int id) {
-		Formateur f =  formateurDao.findById(id).get();
-		System.out.println(f.getNom());
-		return f;
+		return formateurDao.findById(id).get();
 	}
 }
