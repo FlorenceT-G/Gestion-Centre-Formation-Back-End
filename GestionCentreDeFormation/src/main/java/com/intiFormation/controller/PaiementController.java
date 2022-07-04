@@ -22,27 +22,27 @@ public class PaiementController {
 	@Autowired
 	IPaiementService paiementService;
 	
-	@GetMapping("/admin/paiement")
+	@GetMapping("/assistant/paiement")
 	public List<Paiement> chercherTtPaiement() {
 		return paiementService.selectAll();
 	}
 	
-	@GetMapping("/admin/paiement/{id}")
+	@GetMapping("/paiement/{id}")
 	public Paiement chercherUnPaiement(@PathVariable("id") int id) {
 		return paiementService.selectById(id);
 	}
 	
-	@PostMapping("/admin/paiement")
+	@PostMapping("/assistant/paiement")
 	public void ajoutPaiement(@RequestBody Paiement p) {
 		paiementService.ajouter(p);
 	}
 	
-	@PutMapping("/admin/paiement/{id}")
+	@PutMapping("/assistant/paiement/{id}")
 	public void modificationPaiement(@RequestBody Paiement p, @PathVariable("id") int id) {
 		paiementService.ajouter(p);
 	}
 	
-	@DeleteMapping("/admin/paiement/{id}")
+	@DeleteMapping("/assistant/paiement/{id}")
 	public void supprimerPaiement(@PathVariable("id") int id) {
 		paiementService.supprimer(id);
 	}

@@ -23,64 +23,64 @@ import com.intiFormation.service.IProspectService;
 
 
 @RestController
-@RequestMapping("/Admin")
+@RequestMapping("/commercial")
 @CrossOrigin(origins="http://localhost:4200")
 public class ProspectController {
 	
 	@Autowired
 	IProspectService IpService;
 	
-	@PostMapping("/ajoutProspect")
+	@PostMapping("/prospects")
 	public void inserer(@RequestBody Prospect prospect)
 	{
 		IpService.Ajouter(prospect);
 	}
 
-	@GetMapping("/Prospects")
+	@GetMapping("/prospects")
 	public List<Prospect> aff()
 	{
 		List<Prospect> Liste=  IpService.GetAll();
 		return (Liste);
 	}
 	
-	@GetMapping("/Prospects/{nom}")
+	@GetMapping("/prospects/{nom}")
 	public List<Prospect> affnom(@PathVariable("id") String nom)
 	{
 		List<Prospect> Liste=  IpService.SelectByNom(nom);
 		return (Liste);
 	}
 	
-	@GetMapping("/Prospect/{id}")
+	@GetMapping("/prospects/{id}")
 	public Prospect selectid(@PathVariable("id") int id)
 	{
 		Prospect p =  IpService.SelectById(id);
 		return (p);
 	}
 	
-	@GetMapping("/Prospect/{num}")
+	@GetMapping("/prospects/{num}")
 	public Prospect selectnum(@PathVariable("id") long num)
 	{
 		Prospect p =  IpService.SelectByNum(num);
 		return (p);
 	}
 	
-	@GetMapping("/Prospect/{mail}")
+	@GetMapping("/prospects/{mail}")
 	public Prospect selectmail(@PathVariable("mail") String mail)
 	{
 		Prospect p =  IpService.SelectByEmail(mail);
 		return (p);
 	}
 		
-	@DeleteMapping ("Commercial/SupprimerProspect/{id}")
+	@DeleteMapping ("/prospects/{id}")
 	public void supp(@PathVariable("id") int id)
 	{
 		IpService.supprimer(id);
 	}
 	
-	@PutMapping("/Commercial/UpdateProspect")
+	@PutMapping("/prospects")
 	public void update(@RequestBody Prospect p)
 	{
 		IpService.Modifier(p);
-}
+	}
 
 }

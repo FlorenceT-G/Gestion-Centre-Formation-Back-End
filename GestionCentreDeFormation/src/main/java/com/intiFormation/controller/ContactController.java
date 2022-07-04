@@ -21,7 +21,6 @@ import com.intiFormation.service.IContactService;
 
 
 @RestController 
-//@RequestMapping("/admin")
 @CrossOrigin(origins="http://localhost:4200")
 public class ContactController {
 	
