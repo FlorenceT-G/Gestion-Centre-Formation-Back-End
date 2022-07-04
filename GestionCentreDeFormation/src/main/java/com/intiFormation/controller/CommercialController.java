@@ -20,7 +20,7 @@ import com.intiFormation.entity.Commercial;
 import com.intiFormation.service.ICommercialService;
 
 @RestController
-@RequestMapping("/Admin")
+@RequestMapping("/admin")
 @CrossOrigin(origins="http://localhost:4200")
 public class CommercialController {
 	
