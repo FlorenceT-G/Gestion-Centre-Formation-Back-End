@@ -18,7 +18,7 @@ import com.intiFormation.entity.Utilisateur;
 import com.intiFormation.service.IUtilisateurService;
 
 @RestController
-@CrossOrigin(origins="http//localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class UtilisateurController {
 	
 	@Autowired
@@ -46,6 +46,7 @@ public class UtilisateurController {
 	
 	@GetMapping("/utilisateurs/{username}")
 	public Utilisateur selectByUsername(@PathVariable("username") String username) {
+		System.out.println(username);
 		return uService.chercherParUsername(username).get();
 	}
 	
