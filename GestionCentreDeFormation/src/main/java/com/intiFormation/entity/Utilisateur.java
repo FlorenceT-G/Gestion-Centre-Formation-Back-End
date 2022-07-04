@@ -18,6 +18,7 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUtilisateur;
+	
 	private String nom;
 	private String prenom;
 	private String adresseMail;

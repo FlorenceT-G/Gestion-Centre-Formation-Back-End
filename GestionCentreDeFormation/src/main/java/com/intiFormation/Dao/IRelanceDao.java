@@ -1,4 +1,4 @@
-package com.intiFormation.Dao;
+package com.intiFormation.dao;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import com.intiFormation.entity.Relance;
 
 public interface IRelanceDao extends JpaRepository<Relance, Integer>{
 		
-	public List<Relance> findByParticipant_idParticipant(int id);
+	public List<Relance> findByParticipant_idUtilisateur(int idParticipant);
 	
-	public List<Relance> findByAssistant_idAssistant(int id);
+	public List<Relance> findByAssistant_idUtilisateur(int idAssistant);
 	
 
 }

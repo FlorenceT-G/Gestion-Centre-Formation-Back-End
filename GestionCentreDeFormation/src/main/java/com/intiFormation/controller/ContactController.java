@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.intiFormation.entity.Contact;
 import com.intiFormation.service.IContactService;
 
-@RestController
-//@RequestMapping("/admin")
+
+@RestController 
 @CrossOrigin(origins="http://localhost:4200")
 public class ContactController {
 	

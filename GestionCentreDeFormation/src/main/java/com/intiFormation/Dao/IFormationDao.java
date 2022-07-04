@@ -1,4 +1,4 @@
-package com.intiFormation.Dao;
+package com.intiFormation.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import com.intiFormation.entity.Formation;
 
 public interface IFormationDao extends JpaRepository<Formation, Integer> {
 
-	public List<Formation> findByListeParticipants_idParticipant(int id);
-	public List<Formation> findByFormateur_idFormateur(int id);
+	public List<Formation> findByListeParticipants_idUtilisateur(int idParticipant);
+	public List<Formation> findByFormateur_idUtilisateur(int idFormateur);
 
 }

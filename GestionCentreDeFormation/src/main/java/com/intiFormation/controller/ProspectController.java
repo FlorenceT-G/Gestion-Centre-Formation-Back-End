@@ -71,7 +71,6 @@ public class ProspectController {
 	public void update(@RequestBody Prospect p)
 	{
 		IpService.Modifier(p);
-	}
-	
-	
+}
+
 }

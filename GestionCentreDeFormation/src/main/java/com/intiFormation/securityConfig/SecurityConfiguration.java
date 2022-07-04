@@ -29,6 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private RequestFilter jwtrequestfilter;
 	
+	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDS);
@@ -38,7 +40,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable()
-		.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll() 
+		.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+		.antMatchers("/admin/**").hasAuthority("admin")
+		.antMatchers("/assistant/**").hasAuthority("assistant")
+		.antMatchers("/commercial/**").hasAuthority("commercial")
+		.antMatchers("/formateur/**").hasAuthority("formateur")
+		.antMatchers("/participant/**").hasAuthority("participant")
 		.antMatchers("/authenticate").permitAll()
 		.anyRequest().authenticated()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

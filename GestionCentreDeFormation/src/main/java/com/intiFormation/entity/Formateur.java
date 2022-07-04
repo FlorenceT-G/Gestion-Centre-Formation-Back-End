@@ -15,20 +15,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Formateur extends Utilisateur {
 	
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idFormateur;
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "formateur")
 	private List<Formation> listeFormations;
 	
-	public int getIdFormateur() {
-		return idFormateur;
-	}
-	public void setIdFormateur(int idFormateur) {
-		this.idFormateur = idFormateur;
-	}
+	
 	public List<Formation> getListeFormations() {
 		return listeFormations;
 	}

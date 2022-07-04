@@ -18,8 +18,7 @@ import com.intiFormation.entity.Utilisateur;
 import com.intiFormation.service.IUtilisateurService;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin("http//localhost:4200")
+@CrossOrigin(origins="http//localhost:4200")
 public class UtilisateurController {
 	
 	@Autowired
@@ -40,12 +39,12 @@ public class UtilisateurController {
 		uService.supprimerUtilisateur(idUtilisateur);
 	}
 	
-	@GetMapping("/utilisateurs")
+	@GetMapping("/admin/utilisateurs")
 	public List<Utilisateur> selectAll() {
 		return uService.tousUtilisateurs();
 	}
 	
-	@GetMapping("/utilisateurs/{username}")
+	@GetMapping("/admin/utilisateurs/{username}")
 	public Optional<Utilisateur> selectByUsername(@PathVariable("username") String username) {
 		return uService.chercherParUsername(username);
 	}
