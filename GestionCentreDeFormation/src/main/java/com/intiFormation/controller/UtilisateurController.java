@@ -44,9 +44,9 @@ public class UtilisateurController {
 		return uService.tousUtilisateurs();
 	}
 	
-	@GetMapping("/admin/utilisateurs/{username}")
-	public Optional<Utilisateur> selectByUsername(@PathVariable("username") String username) {
-		return uService.chercherParUsername(username);
+	@GetMapping("/utilisateurs/{username}")
+	public Utilisateur selectByUsername(@PathVariable("username") String username) {
+		return uService.chercherParUsername(username).get();
 	}
 	
 	// public Optional<Utilisateur> chercherParNom(String nom);
