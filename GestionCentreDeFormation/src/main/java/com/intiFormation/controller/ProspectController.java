@@ -1,10 +1,15 @@
 package com.intiFormation.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.origin.SystemEnvironmentOrigin;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
@@ -15,8 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IProspectService;
@@ -81,6 +87,43 @@ public class ProspectController {
 	public void update(@RequestBody Prospect p)
 	{
 		IpService.Modifier(p);
+	}
+	
+	@GetMapping("/file")	
+	public void csvReader(@RequestParam("file") MultipartFile file, HttpSession session) {
+		String filename = file.getOriginalFilename();
+		String path = "C:\\Users\\p.gaillard\\Downloads\\"+filename;
+		
+		// List<Prospect> prospects = new ArrayList<>();
+		Scanner sc = null;
+		try {
+			sc = new Scanner(new File(path)); //parsing a CSV file into the constructor of Scanner class 
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	    sc.useDelimiter(","); //setting comma as delimiter pattern
+
+	    while (sc.hasNext()) {
+	    	Prospect prospect = new Prospect();
+	    	prospect.setNom(sc.next());
+	    	prospect.setPrenom(sc.next());
+	    	prospect.setEmail(sc.next());
+	    	
+	    	String SnumBrut = sc.next();
+	    	String SnumTel = SnumBrut;
+	    	if(SnumBrut.substring(0,1).equals("0")) {
+	    		SnumTel = "33" + SnumBrut.substring(1);
+	    	}
+	    	long numTel = Long.parseLong(SnumTel);
+	    	
+	    	prospect.setNumTel(numTel);
+	    	// prospects.add(prospect);
+			IpService.Ajouter(prospect);
+	    }
+	    
+	    // System.out.println(prospects);
+	    sc.close();
 	}
 
 }

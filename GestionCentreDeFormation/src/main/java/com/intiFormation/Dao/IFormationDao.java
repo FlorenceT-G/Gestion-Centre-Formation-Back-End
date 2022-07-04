@@ -1,4 +1,4 @@
-package com.intiFormation.dao;
+package com.intiFormation.Dao;
 
 import java.util.List;
 

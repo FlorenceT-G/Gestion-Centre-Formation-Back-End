@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.dao.IFormationDao;
+import com.intiFormation.Dao.IFormationDao;
 import com.intiFormation.entity.Formation;
 
 @Service
@@ -24,6 +24,8 @@ public class FormationService implements IFormationService{
 	}
 	
 	public Optional<Formation> selectById(int id) {
+		Optional<Formation> of = formationDao.findById(id);
+		System.out.println(of.get().getLibFormation());
 		return formationDao.findById(id);
 	}
 	
