@@ -28,14 +28,14 @@ public class RelanceController {
 		IrService.Ajouter(relance);
 	}
 	
-	@GetMapping("/assistant/relances")
+	@GetMapping("/assistant/liste-relances")
 	public List<Relance> aff()
 	{
 		List<Relance> Liste = IrService.GetAll();
 		return (Liste);
 	}
 	
-	@GetMapping("/assistant/relances/{id}")
+	@GetMapping("/assistant/liste-relances/{id}")
 	public List<Relance> affbypar(@PathVariable("id") int id)
 	{
 		List<Relance> Liste=  IrService.GetByAssistant(id);
