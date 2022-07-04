@@ -39,13 +39,14 @@ public class AuthController {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authentificationRequest.getUsername(), authentificationRequest.getPassword()));
 			
 		} catch (BadCredentialsException e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 			throw new Exception("incorrect username and/or password",e);
 		}
 		
 		final UserDetails userdetails=customUserDetailsService.loadUserByUsername(authentificationRequest.getUsername());
 		final String jwt=jwtokenUtil.generateToken(userdetails);
+		
 		
 		return new ResponseEntity(new AuthentificationResponse(jwt), HttpStatus.OK);
 	}

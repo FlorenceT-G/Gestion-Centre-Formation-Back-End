@@ -3,6 +3,7 @@ package com.intiFormation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Assistant;
 import com.intiFormation.service.IAssistantService;
+import com.intiFormation.service.IRoleService;
 
 @RestController 
 @RequestMapping("/admin")
@@ -23,6 +25,12 @@ public class AssistantController {
 	
 	@Autowired
 	IAssistantService assistantService;
+	
+	@Autowired
+	BCryptPasswordEncoder bc;
+	
+	@Autowired
+	IRoleService roleService;
 	
 	@GetMapping("/assistants")
 	public List<Assistant> AfficherAssistant() {
@@ -44,6 +52,8 @@ public class AssistantController {
 	@PostMapping("/assistants")
 	public void ajouterAssistant(@RequestBody Assistant a) {
 		
+		a.setPassword(bc.encode(a.getPassword()));
+		a.setRole(roleService.checherById(2).get());
 		assistantService.ajouter(a);
 	}
 	
