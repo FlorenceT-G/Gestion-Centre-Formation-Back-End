@@ -45,12 +45,8 @@ public class AuthController {
 		}
 		
 		final UserDetails userdetails=customUserDetailsService.loadUserByUsername(authentificationRequest.getUsername());
-		System.out.println(userdetails.getUsername());
-		
 		final String jwt=jwtokenUtil.generateToken(userdetails);
 		
-		System.out.println(jwt);
-				
 		return new ResponseEntity(new AuthentificationResponse(jwt), HttpStatus.OK);
 	}
 	

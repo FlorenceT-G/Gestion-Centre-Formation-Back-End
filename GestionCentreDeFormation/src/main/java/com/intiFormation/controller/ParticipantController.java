@@ -43,9 +43,8 @@ public class ParticipantController {
 	}
 	
 	@GetMapping("/participants/{id}")
-	public Participant selectid(@PathVariable("id") int id)
-	{
-		Participant p =  IpService.SelectById(id);
+	public Participant selectid(@PathVariable("id") int id) {
+		Participant p =  IpService.selectById(id);
 		return (p);
 	}
 	

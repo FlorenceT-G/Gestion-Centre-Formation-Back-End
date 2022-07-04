@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.dao.IFormateurDao;
+import com.intiFormation.Dao.IFormateurDao;
 import com.intiFormation.entity.Formateur;
 
 @Service
@@ -28,6 +28,8 @@ public class FormateurService implements IFormateurService {
 	}
 	
 	public Formateur selectById(int id) {
-		return formateurDao.findById(id).get();
+		Formateur f =  formateurDao.findById(id).get();
+		System.out.println(f.getNom());
+		return f;
 	}
 }
