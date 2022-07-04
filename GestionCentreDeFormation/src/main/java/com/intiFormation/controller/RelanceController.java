@@ -49,7 +49,7 @@ public class RelanceController {
 		return (Liste);
 	}
 	
-	@GetMapping("/assistant/relances/{id}")
+	@GetMapping("/assistant/relancesId/{id}")
 	public Relance selectid(@PathVariable("id") int id)
 	{
 		Relance r = IrService.SelectById(id);

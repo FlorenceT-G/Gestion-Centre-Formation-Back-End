@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.dao.IPaiementDao;
+import com.intiFormation.Dao.IPaiementDao;
 import com.intiFormation.entity.Paiement;
 
 @Service

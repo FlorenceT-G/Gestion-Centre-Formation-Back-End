@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.dao.IProspectDao;
+import com.intiFormation.Dao.IProspectDao;
 import com.intiFormation.entity.Prospect;
 
 @Service
