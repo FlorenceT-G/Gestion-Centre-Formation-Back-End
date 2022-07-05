@@ -11,11 +11,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Participant extends Utilisateur {
 
 
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="listeParticipants")
 	private List<Formation> listeFormations;
 	
