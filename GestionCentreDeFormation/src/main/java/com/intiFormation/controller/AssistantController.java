@@ -18,9 +18,8 @@ import com.intiFormation.entity.Assistant;
 import com.intiFormation.service.IAssistantService;
 import com.intiFormation.service.IRoleService;
 
-@RestController 
-@RequestMapping("/admin")
-@CrossOrigin(origins="http://localhost:4200")
+@RestController
+@CrossOrigin("http://localhost:4200")
 public class AssistantController {
 	
 	@Autowired
@@ -32,7 +31,7 @@ public class AssistantController {
 	@Autowired
 	IRoleService roleService;
 	
-	@GetMapping("/assistants")
+	@GetMapping("/admin/assistants")
 	public List<Assistant> AfficherAssistant() {
 		
 		List<Assistant> liste = assistantService.getAll();
@@ -40,7 +39,7 @@ public class AssistantController {
 	}
 	
 	
-	@GetMapping("/assistants/{id}")
+	@GetMapping("/admin/assistants/{id}")
 	public Assistant chercherUn(@PathVariable("id") int id)
 	{
 		Assistant a = assistantService.getById(id).get();
@@ -49,7 +48,7 @@ public class AssistantController {
 	
 	
 	
-	@PostMapping("/assistants")
+	@PostMapping("/admin/assistants")
 	public void ajouterAssistant(@RequestBody Assistant a) {
 		
 		a.setPassword(bc.encode(a.getPassword()));
@@ -58,7 +57,7 @@ public class AssistantController {
 	}
 	
 	
-	@DeleteMapping("/assistants/{id}")
+	@DeleteMapping("/admin/assistants/{id}")
 	public void supprimer(@PathVariable("id") int id)
 	{
 		assistantService.supprimer(id);
@@ -66,7 +65,7 @@ public class AssistantController {
 	}
 	
 	
-	@PutMapping("/assistants")
+	@PutMapping("/assistant/assistants")
 	public void modifier(@RequestBody Assistant a) {
 		
 		assistantService.modifier(a);
