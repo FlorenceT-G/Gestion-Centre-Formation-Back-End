@@ -18,7 +18,7 @@ import com.intiFormation.entity.Assistant;
 import com.intiFormation.service.IAssistantService;
 import com.intiFormation.service.IRoleService;
 
-@RestController
+@RestController	
 @CrossOrigin("http://localhost:4200")
 public class AssistantController {
 	

@@ -33,7 +33,7 @@ import com.intiFormation.service.IProspectService;
 
 @RestController
 @RequestMapping("/commercial")
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class ProspectController {
 	
 	@Autowired
@@ -46,11 +46,33 @@ public class ProspectController {
 	}
 
 	@GetMapping("/prospects")
-	public List<Prospect> aff()
-	{
-		List<Prospect> Liste=  IpService.GetAll();
-		return (Liste);
+	public List<Prospect> aff() {
+		return IpService.GetAll();
 	}
+	
+	@GetMapping("/prospects-non-inscrits")
+	public List<Prospect> prospectsNonInscrits() {
+		List<Prospect> l = IpService.GetAll();
+		List<Prospect> lNonInscrits = new ArrayList<Prospect>();
+		
+		for(Prospect p : l) {
+			if(p.getAInscrire() == false) lNonInscrits.add(p);
+		}
+		
+		return lNonInscrits;
+	}
+	
+	@GetMapping("/prospects-a-inscrire")
+	public List<Prospect> prospectsAInscrire() {
+		List<Prospect> l = IpService.GetAll();
+		List<Prospect> lAInscrire = new ArrayList<Prospect>();
+		
+		for(Prospect p : l) {
+			if(p.getAInscrire() == true) lAInscrire.add(p);
+		}
+		
+		return lAInscrire;
+	} 
 	
 	@GetMapping("/prospects/{nom}")
 	public List<Prospect> affnom(@PathVariable("id") String nom)

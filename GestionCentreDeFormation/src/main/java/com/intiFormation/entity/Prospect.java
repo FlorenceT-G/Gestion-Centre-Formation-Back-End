@@ -19,6 +19,8 @@ public class Prospect {
 	private String email;
 	private long numTel;
 	
+	private boolean aInscrire = false;
+	
 	@OneToMany(mappedBy = "prospect")
 	private List<Contact> contacts; 
 	
@@ -53,14 +55,18 @@ public class Prospect {
 		this.numTel = numTel;
 	}
 	
-	
-	
-	
 	public List<Contact> getContacts() {
 		return contacts;
 	}
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
+	}
+	
+	public boolean getAInscrire() {
+		return this.aInscrire;
+	}
+	public void setAInscrire(boolean aInscrire) {
+		this.aInscrire = aInscrire;
 	}
 	
 	public Prospect() {
