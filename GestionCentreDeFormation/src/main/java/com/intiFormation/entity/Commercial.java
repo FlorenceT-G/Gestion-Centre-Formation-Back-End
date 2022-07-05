@@ -18,6 +18,8 @@ public class Commercial extends Utilisateur {
 	@OneToMany(mappedBy = "commercial")
 	private List<Contact> contacts;
 	
+	
+	
 	public Commercial() {
 		super();
 	}

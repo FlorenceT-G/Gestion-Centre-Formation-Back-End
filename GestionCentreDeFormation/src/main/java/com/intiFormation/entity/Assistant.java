@@ -27,6 +27,17 @@ public class Assistant extends Utilisateur {
 	public Assistant() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Assistant [getNom()=" + getNom() + ", getPrenom()="
+				+ getPrenom() + ", getAdresseMail()=" + getAdresseMail() + ", getUsername()=" + getUsername()
+				+ ", getPassword()=" + getPassword() + "]";
+	}
+	
+	
+	
+	
+	
 	
 	
 	

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.intiFormation.Dao.IRoleDao;
+import com.intiFormation.dao.IRoleDao;
 import com.intiFormation.entity.Role;
 
 @Service
@@ -33,6 +33,11 @@ public class RoleService implements IRoleService {
 	
 	public Optional<Role> chercherParLibRole(String libRole) {
 		return roleDao.findByLibRole(libRole);
+	}
+	
+	public Optional<Role> checherById(int id){
+		
+		return roleDao.findById(id);
 	}
 
 }
