@@ -74,8 +74,8 @@ public class ProspectController {
 		return lAInscrire;
 	} 
 	
-	@GetMapping("/prospects/{nom}")
-	public List<Prospect> affnom(@PathVariable("id") String nom)
+	@GetMapping("/prospects-by-nom/{nom}")
+	public List<Prospect> affnom(@PathVariable("nom") String nom)
 	{
 		List<Prospect> Liste=  IpService.SelectByNom(nom);
 		return (Liste);
@@ -146,6 +146,7 @@ public class ProspectController {
 	    	prospect.setNom(sc.next());
 	    	prospect.setPrenom(sc.next());
 	    	prospect.setEmail(sc.next());
+	    	prospect.setAInscrire(false);
 	    	
 	    	String SnumBrut = sc.next();
 	    	String SnumTel = SnumBrut;
