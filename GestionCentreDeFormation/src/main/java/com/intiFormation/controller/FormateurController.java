@@ -3,6 +3,7 @@ package com.intiFormation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formateur;
 import com.intiFormation.service.IFormateurService;
+import com.intiFormation.service.IRoleService;
 
 @RestController
 @RequestMapping("/admin")
@@ -23,6 +25,10 @@ public class FormateurController {
 
 	@Autowired
 	IFormateurService formateurService;
+	@Autowired
+	BCryptPasswordEncoder bc;
+	@Autowired
+	IRoleService roleService;
 	
 	@GetMapping("/formateur")
 	public List<Formateur> chercherTtFormateur() {
@@ -36,6 +42,8 @@ public class FormateurController {
 	
 	@PostMapping("/formateur")
 	public void ajoutFormateur(@RequestBody Formateur f) {
+		f.setPassword(bc.encode(f.getPassword()));
+		f.setRole(roleService.checherById(4).get());
 		formateurService.ajouter(f);
 	}
 	

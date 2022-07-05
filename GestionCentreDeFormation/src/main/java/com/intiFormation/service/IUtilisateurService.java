@@ -12,6 +12,7 @@ public interface IUtilisateurService {
 	public void supprimerUtilisateur(int id);
 	
 	public Optional<Utilisateur> chercherParUsername(String username);
+	public Optional<Utilisateur> chercherParId(int id);
 	public List<Utilisateur> tousUtilisateurs();
 	public List<Utilisateur> chercherParRole(int idRole);
 }
