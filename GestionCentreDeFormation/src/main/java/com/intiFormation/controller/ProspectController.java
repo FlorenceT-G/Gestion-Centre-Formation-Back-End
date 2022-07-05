@@ -64,7 +64,7 @@ public class ProspectController {
 	}
 	
 	@GetMapping("/prospects/{num}")
-	public Prospect selectnum(@PathVariable("id") long num)
+	public Prospect selectnum(@PathVariable("num") long num)
 	{
 		Prospect p =  IpService.SelectByNum(num);
 		return (p);
@@ -102,9 +102,13 @@ public class ProspectController {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		// Prtoposer à l'utilisateur d'utiliser son délimiteur
+		
 	    sc.useDelimiter(","); //setting comma as delimiter pattern
 
 	    while (sc.hasNext()) {
+	    	// String Tampon = sc.next();
 	    	Prospect prospect = new Prospect();
 	    	prospect.setNom(sc.next());
 	    	prospect.setPrenom(sc.next());

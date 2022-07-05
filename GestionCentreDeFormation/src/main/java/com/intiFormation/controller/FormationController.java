@@ -29,8 +29,8 @@ public class FormationController {
 		formationService.ajouter(f);
 	}
 	
-	@PutMapping("/admin/formations/{id}")
-	public void modificationFormation(@RequestBody Formation f, @PathVariable("id") int id) {
+	@PutMapping("/admin/formations")
+	public void modificationFormation(@RequestBody Formation f) {
 		formationService.ajouter(f);
 	}
 	
