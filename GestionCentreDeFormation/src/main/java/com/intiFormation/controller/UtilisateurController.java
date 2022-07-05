@@ -18,7 +18,7 @@ import com.intiFormation.entity.Utilisateur;
 import com.intiFormation.service.IUtilisateurService;
 
 @RestController
-@CrossOrigin(origins="http//localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class UtilisateurController {
 	
 	@Autowired

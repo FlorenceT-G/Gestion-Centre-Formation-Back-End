@@ -40,13 +40,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable()
+		
 		.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-		.antMatchers("/**").hasAuthority("admin")
+		.antMatchers("/authenticate","/utilisateurs/{username}").permitAll()
 		.antMatchers("/assistant/**").hasAuthority("assistant")
 		.antMatchers("/commercial/**").hasAuthority("commercial")
 		.antMatchers("/formateur/**").hasAuthority("formateur")
 		.antMatchers("/participant/**").hasAuthority("participant")
-		.antMatchers("/authenticate","/utilisateurs/{username}").permitAll()
+		.antMatchers("/**").hasAuthority("admin")
 		.anyRequest().authenticated()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().addFilterBefore(jwtrequestfilter, UsernamePasswordAuthenticationFilter.class);
