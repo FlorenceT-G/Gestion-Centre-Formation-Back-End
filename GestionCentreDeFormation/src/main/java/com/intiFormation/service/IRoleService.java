@@ -13,5 +13,6 @@ public interface IRoleService {
 	
 	public List<Role> tousRoles();
 	public Optional<Role> chercherParLibRole(String libRole);
+	public Optional<Role> checherById(int id);
 
 }

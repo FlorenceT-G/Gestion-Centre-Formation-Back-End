@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Commercial;
 import com.intiFormation.service.ICommercialService;
+import com.intiFormation.service.IRoleService;
 
 @RestController
 @RequestMapping("/admin")
@@ -26,6 +28,13 @@ public class CommercialController {
 	
 	@Autowired
 	ICommercialService commercialService;
+	
+	@Autowired
+	BCryptPasswordEncoder bc;
+	
+	@Autowired
+	IRoleService roleService;
+	
 	
 	@GetMapping("/commerciaux")
 	public List<Commercial> AfficherAssistant() {
@@ -46,6 +55,8 @@ public class CommercialController {
 	@PostMapping("/commerciaux")
 	public void ajouterCommercial(@RequestBody Commercial c) {
 		
+		c.setPassword(bc.encode(c.getPassword()));
+		c.setRole(roleService.checherById(3).get());
 		commercialService.ajouter(c);
 	}
 	
