@@ -37,8 +37,8 @@ public class PaiementController {
 		paiementService.ajouter(p);
 	}
 	
-	@PutMapping("/assistant/paiement/{id}")
-	public void modificationPaiement(@RequestBody Paiement p, @PathVariable("id") int id) {
+	@PutMapping("/assistant/paiement")
+	public void modificationPaiement(@RequestBody Paiement p) {
 		paiementService.ajouter(p);
 	}
 	
