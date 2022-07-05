@@ -31,6 +31,10 @@ public class UtilisateurService implements IUtilisateurService {
 		return utilisateurDao.findByUsername(username);
 	}
 	
+	public Optional<Utilisateur> chercherParId(int id) {
+		return utilisateurDao.findById(id);
+	}
+	
 	public List<Utilisateur> tousUtilisateurs() {
 		return utilisateurDao.findAll();
 	}

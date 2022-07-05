@@ -50,6 +50,11 @@ public class UtilisateurController {
 		return uService.chercherParUsername(username).get();
 	}
 	
+	@GetMapping("/utilisateur/{id}")
+	public Utilisateur selectById(@PathVariable("id") int id) {
+		return uService.chercherParId(id).get();
+	}
+	
 	// public Optional<Utilisateur> chercherParNom(String nom);
 	// public List<Utilisateur> chercherParRole(int idRole);
 	
