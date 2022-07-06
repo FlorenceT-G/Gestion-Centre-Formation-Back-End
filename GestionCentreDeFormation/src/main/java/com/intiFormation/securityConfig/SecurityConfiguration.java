@@ -44,8 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 		.antMatchers("/authenticate").permitAll()
 		.antMatchers("/utilisateurs/**").permitAll()
-		.antMatchers("/**").hasAuthority("admin")
-
 		.antMatchers("/assistant/**").hasAuthority("assistant")
 		.antMatchers("/commercial/**").hasAuthority("commercial")
 		.antMatchers("/formateur/**").hasAuthority("formateur")

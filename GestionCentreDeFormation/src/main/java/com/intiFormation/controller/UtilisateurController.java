@@ -46,7 +46,7 @@ public class UtilisateurController {
 	
 	@GetMapping("/utilisateurs/{username}")
 	public Utilisateur selectByUsername(@PathVariable("username") String username) {
-		System.out.println(username);
+		System.out.println(uService.chercherParUsername(username).get().getIdUtilisateur());
 		return uService.chercherParUsername(username).get();
 	}
 	
