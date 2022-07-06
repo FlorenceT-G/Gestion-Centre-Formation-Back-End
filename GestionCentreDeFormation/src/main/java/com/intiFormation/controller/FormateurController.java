@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formateur;
-import com.intiFormation.entity.Formation;
 import com.intiFormation.service.IFormateurService;
 import com.intiFormation.service.IFormationService;
 import com.intiFormation.service.IRoleService;
-
 
 @RestController
 @RequestMapping("/admin")

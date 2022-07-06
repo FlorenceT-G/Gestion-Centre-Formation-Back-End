@@ -31,6 +31,8 @@ public class UtilisateurController {
 	
 	@PutMapping("/utilisateurs")
 	public void modify(@RequestBody Utilisateur utilisateur) {
+		System.out.println(utilisateur.getNom());
+		System.out.println(utilisateur.getIdUtilisateur());
 		uService.modifierUtilisateur(utilisateur);
 	}
 	
