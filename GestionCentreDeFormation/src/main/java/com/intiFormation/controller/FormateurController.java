@@ -1,5 +1,6 @@
 package com.intiFormation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formateur;
+import com.intiFormation.entity.Formation;
 import com.intiFormation.service.IFormateurService;
+import com.intiFormation.service.IFormationService;
 import com.intiFormation.service.IRoleService;
+
 
 @RestController
 @RequestMapping("/admin")
@@ -29,6 +33,9 @@ public class FormateurController {
 	BCryptPasswordEncoder bc;
 	@Autowired
 	IRoleService roleService;
+	
+	@Autowired
+	IFormationService formationService;
 	
 	@GetMapping("/formateur")
 	public List<Formateur> chercherTtFormateur() {
@@ -55,6 +62,29 @@ public class FormateurController {
 	@DeleteMapping("/formateur/{id}")
 	public void supprimerFormateur(@PathVariable("id") int id) {
 		formateurService.supprimer(id);
+	}
+	
+	
+	
+	@GetMapping("/formateurDispo")
+	public List<Formateur> chercherFormateurDispo() {
+		
+		List<Formateur> listeFormateur = formateurService.selectAll();
+		List<Formateur> listeFormateursDispo = new ArrayList<>();
+		
+		for (int i = 0 ; i < listeFormateur.size() ; i++) {
+			
+			if (
+			formationService.FormationEnCours(listeFormateur.get(i).getListeFormations()).isEmpty() &&
+			formationService.prochainesFormations(listeFormateur.get(i).getListeFormations()).isEmpty()) 
+			{
+				listeFormateursDispo.add(listeFormateur.get(i));
+			}
+			
+			
+		}
+		return listeFormateursDispo;
+		
 	}
 	
 }

@@ -45,62 +45,25 @@ public class FormationController {
 	}
 	
 	@GetMapping("/prochaines-formations")
-	public List<Formation> prochainesFormations() {
-		List<Formation> lFormations = formationService.selectAll();
-		List<Formation> lFormationsProchaines = new ArrayList<>();
-		LocalDate now = LocalDate.now();
+	public List<Formation> afficherProchainesFormations() {
 		
-		for(int i = 0 ; i < lFormations.size() ; i++) {
-			LocalDate dDebut = lFormations.get(i).getDateDebut();
-			System.out.println(dDebut);
-			LocalDate dFin = lFormations.get(i).getDateFin();
-			
-			System.out.println(dFin);
-			
-			if(dDebut.compareTo(now) > 0) {
-				lFormationsProchaines.add(lFormations.get(i));
-			}
-		}
-		
-		return lFormationsProchaines;
+		return formationService.prochainesFormations(toutesFormations());
 	}
 	
 	@GetMapping("/formations-en-cours")
 	public List<Formation> afficherFormationEnCours() {
-		List<Formation> listeFormations = formationService.selectAll();
-		List<Formation> listeFormationsEnCours = new ArrayList<>();
 		
-		LocalDate dateNow = LocalDate.now();
-		
-		System.out.println(dateNow);
-		
-		for(int i = 0 ; i < listeFormations.size() ; i++) {
-			LocalDate dDebut = listeFormations.get(i).getDateDebut();
-			System.out.println(dDebut);
-			LocalDate dFin = listeFormations.get(i).getDateFin();
-			
-			System.out.println(dFin);
-			if(dDebut.compareTo(dateNow) < 0 && dFin.compareTo(dateNow) > 0) {
-				listeFormationsEnCours.add(listeFormations.get(i));
-			}
-		}
-		return listeFormationsEnCours;
+		return formationService.FormationEnCours(toutesFormations());
 	}
+	
+
 	
 	@GetMapping("/historiqueFormations")
 	public List<Formation> afficherHistoriqueFormation() {
-		List<Formation> listeFormations = formationService.selectAll();
-		List<Formation> listeHistoriqueFormation = new ArrayList<>();
-		LocalDate dateNow = LocalDate.now();
-		
-		for(int i = 0 ; i < listeFormations.size() ; i++) {
-			LocalDate dFin = listeFormations.get(i).getDateFin();
-			if(dFin.compareTo(dateNow) > 0) {
-				listeHistoriqueFormation.add(listeFormations.get(i));
-			}
-		}
-		return listeHistoriqueFormation;
+	
+		return formationService.HistoriqueFormation(toutesFormations());
 	}
+	
 	
 	@GetMapping("/formations/{id}")
 	public Formation afficherFormation(@PathVariable("id") int id) {

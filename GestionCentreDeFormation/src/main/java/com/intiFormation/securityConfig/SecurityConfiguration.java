@@ -42,11 +42,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 		
 		.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-		.antMatchers("/authenticate","/utilisateurs/**").permitAll()
-		.antMatchers("/assistant/**").hasAuthority("assistant")
-		.antMatchers("/commercial/**").hasAuthority("commercial")
-		.antMatchers("/formateur/**").hasAuthority("formateur")
-		.antMatchers("/participant/**").hasAuthority("participant")
+
+		.antMatchers("/authenticate").permitAll()
+		.antMatchers("/utilisateurs/**").permitAll()
+		.antMatchers("/assistant/**").hasAnyAuthority("assistant", "admin")
+		.antMatchers("/commercial/**").hasAnyAuthority("commercial", "admin")
+		.antMatchers("/formateur/**").hasAnyAuthority("formateur", "admin")
+		.antMatchers("/participant/**").hasAnyAuthority("participant", "admin")
 		.antMatchers("/admin/**").hasAuthority("admin")
 		.anyRequest().authenticated()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

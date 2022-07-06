@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Participant;
 import com.intiFormation.service.IParticipantService;
+import com.intiFormation.service.IRoleService;
 
 
 
@@ -29,10 +30,18 @@ public class ParticipantController {
 	@Autowired
 	IParticipantService IpService;
 	
+	@Autowired
+	BCryptPasswordEncoder bc;
+	
+	@Autowired
+	IRoleService roleService;
+	
 	@PostMapping("/participants")
-	public void inserer(@RequestBody Participant participant)
+	public void inserer(@RequestBody Participant p)
 	{
-		IpService.Ajouter(participant);
+		p.setPassword(bc.encode(p.getPassword()));
+		p.setRole(roleService.checherById(5).get());
+		IpService.Ajouter(p);
 	}
 
 	@GetMapping("/participants")
