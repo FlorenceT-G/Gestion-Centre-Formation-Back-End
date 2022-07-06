@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.intiFormation.dao.IProspectDao;
 import com.intiFormation.entity.Contact;
+import com.intiFormation.service.ICommercialService;
 import com.intiFormation.service.IContactService;
+import com.intiFormation.service.IProspectService;
 
 
 @RestController 
@@ -26,6 +28,10 @@ public class ContactController {
 	
 	@Autowired
 	IContactService contactService;
+	@Autowired
+	ICommercialService commercialService;
+	@Autowired
+	IProspectService prospectService;
 	
 	@GetMapping("/contacts")
 	public List<Contact> AfficherContact() {
@@ -44,26 +50,23 @@ public class ContactController {
 	
 	
 	
-	@PostMapping("/contacts")
-	public void ajouterContact(@RequestBody Contact c) {
-		
+	@PostMapping("/contacts/{idProspect}/{idCommercial}")
+	public void ajouterContact(@RequestBody Contact c, @PathVariable("idProspect")int idProspect, @PathVariable("idCommercial") int idCommercial) {
+		c.setCommercial(commercialService.getById(idCommercial).get());
+		c.setProspect(prospectService.SelectById(idProspect));
 		contactService.ajouter(c);
 	}
 	
 	
 	@DeleteMapping("/contacts/{id}")
-	public void supprimer(@PathVariable("id") int id)
-	{
+	public void supprimer(@PathVariable("id") int id) {
 		contactService.supprimer(id);
-
 	}
 	
 	
 	@PutMapping("/contacts")
 	public void modifier(@RequestBody Contact c) {
-		
 		contactService.modifier(c);
-		
 	}
 
 }

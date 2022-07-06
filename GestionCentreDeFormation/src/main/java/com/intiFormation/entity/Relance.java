@@ -1,5 +1,6 @@
 package com.intiFormation.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,11 +16,11 @@ public class Relance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRelance;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idParticipant")
 	private Participant participant;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idAssistant")
 	private Assistant assistant;
 	
