@@ -14,5 +14,8 @@ public interface IFormationService {
 	public List<Formation> selectByIdParticipant(int id);
 	public List<Formation> selectByIdFormateur(int id);
 	public List<Formation> selectAll();
+	public List<Formation> prochainesFormations(List<Formation> listeFormations);
+	public List<Formation> FormationEnCours(List<Formation> listeFormations);
+	public List<Formation> HistoriqueFormation(List<Formation> listeFormations);
 	
 }

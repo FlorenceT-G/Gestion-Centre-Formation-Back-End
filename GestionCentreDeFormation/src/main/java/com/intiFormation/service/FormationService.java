@@ -1,5 +1,7 @@
 package com.intiFormation.service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,9 +40,66 @@ public class FormationService implements IFormationService{
 	}
 
 
-	
 	public List<Formation> selectAll() {
 		return formationDao.findAll();
+	}
+	
+	
+	public List<Formation> prochainesFormations(List<Formation> listeFormations ) {
+		
+		List<Formation> lFormationsProchaines = new ArrayList<>();
+		LocalDate now = LocalDate.now();
+		
+		for(int i = 0 ; i < listeFormations.size() ; i++) {
+			LocalDate dDebut = listeFormations.get(i).getDateDebut();
+			System.out.println(dDebut);
+			LocalDate dFin = listeFormations.get(i).getDateFin();
+			
+			System.out.println(dFin);
+			
+			if(dDebut.compareTo(now) > 0) {
+				lFormationsProchaines.add(listeFormations.get(i));
+			}
+		}
+		
+		return lFormationsProchaines;
+	}
+	
+	
+	public List<Formation> FormationEnCours(List<Formation> listeFormations ) {
+		
+		List<Formation> listeFormationsEnCours = new ArrayList<>();
+		
+		LocalDate dateNow = LocalDate.now();
+		
+		System.out.println(dateNow);
+		
+		for(int i = 0 ; i < listeFormations.size() ; i++) {
+			LocalDate dDebut = listeFormations.get(i).getDateDebut();
+			System.out.println(dDebut);
+			LocalDate dFin = listeFormations.get(i).getDateFin();
+			
+			System.out.println(dFin);
+			if(dDebut.compareTo(dateNow) < 0 && dFin.compareTo(dateNow) > 0) {
+				listeFormationsEnCours.add(listeFormations.get(i));
+			}
+		}
+		return listeFormationsEnCours;
+	}
+	
+	
+	public List<Formation> HistoriqueFormation(List<Formation> listeFormations ) {
+	
+		List<Formation> listeHistoriqueFormation = new ArrayList<>();
+		LocalDate dateNow = LocalDate.now();
+		
+		for(int i = 0 ; i < listeFormations.size() ; i++) {
+			LocalDate dFin = listeFormations.get(i).getDateFin();
+			if(dFin.compareTo(dateNow) < 0) {
+				listeHistoriqueFormation.add(listeFormations.get(i));
+			}
+		}
+		return listeHistoriqueFormation;
 	}
 	
 }
