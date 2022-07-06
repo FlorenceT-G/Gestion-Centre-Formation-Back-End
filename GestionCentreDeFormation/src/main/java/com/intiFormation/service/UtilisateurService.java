@@ -20,6 +20,7 @@ public class UtilisateurService implements IUtilisateurService {
 	}
 	
 	public void modifierUtilisateur(Utilisateur u) {
+		System.out.println(u.getIdUtilisateur());
 		utilisateurDao.save(u);
 	}
 	
