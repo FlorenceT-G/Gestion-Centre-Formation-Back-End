@@ -64,7 +64,7 @@ public class FormationController {
 		return formationService.HistoriqueFormation(toutesFormations());
 	}
 	
-	
+
 	@GetMapping("/formations/{id}")
 	public Formation afficherFormation(@PathVariable("id") int id) {
 		return formationService.selectById(id).get();
@@ -73,6 +73,11 @@ public class FormationController {
 	@GetMapping("/formationParticipant/{id}")
 	public List<Formation> afficherFormationByParticipant(@PathVariable("id") int id) {
 		return formationService.selectByIdParticipant(id);
+	}
+	
+	@GetMapping("/formationParticipantPasPayees/{id}")
+	public List<Formation> afficherFormationPasPayeesByParticipant(@PathVariable("id") int id) {
+		return formationService.selectFormationPasPayeeByParticipant(id);
 	}
 	
 	@GetMapping("/formationFormateur/{id}")

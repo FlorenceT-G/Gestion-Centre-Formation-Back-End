@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Paiement;
+import com.intiFormation.service.IFormationService;
 import com.intiFormation.service.IPaiementService;
+import com.intiFormation.service.IParticipantService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -21,6 +24,12 @@ public class PaiementController {
 
 	@Autowired
 	IPaiementService paiementService;
+	
+	@Autowired
+	IFormationService formationService;
+	
+	@Autowired
+	IParticipantService participantService;
 	
 	@GetMapping("/assistant/paiement")
 	public List<Paiement> chercherTtPaiement() {
@@ -31,6 +40,21 @@ public class PaiementController {
 	public Paiement chercherUnPaiement(@PathVariable("id") int id) {
 		return paiementService.selectById(id);
 	}
+	
+	
+	@GetMapping("/paiementParticipant/{id}")
+	public List<Paiement> chercherPaiementByParticipant(@PathVariable("id") int id) {
+		return paiementService.selectByParticipant(id);
+	}
+	
+	
+	@GetMapping("/paiementResteByParticipant/{idParticipant}")
+	public int chercherRestePaiement(@PathVariable("idParticipant") int idParticipant, 
+			@RequestParam("idFormation") int idFormation) {
+		
+		return paiementService.chercherReste(participantService.selectById(idParticipant), formationService.selectById(idFormation).get());
+	}
+	
 	
 	@PostMapping("/assistant/paiement")
 	public void ajoutPaiement(@RequestBody Paiement p) {

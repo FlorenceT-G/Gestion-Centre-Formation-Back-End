@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IFormationDao;
+import com.intiFormation.dao.IParticipantDao;
 import com.intiFormation.entity.Formation;
 
 @Service
@@ -16,6 +17,12 @@ public class FormationService implements IFormationService{
 
 	@Autowired
 	IFormationDao formationDao;
+	
+	@Autowired
+	IParticipantService participantService;
+	
+	@Autowired
+	IPaiementService paiementService;
 	
 	public void ajouter(Formation f) {
 		formationDao.save(f);
@@ -100,6 +107,19 @@ public class FormationService implements IFormationService{
 			}
 		}
 		return listeHistoriqueFormation;
+	}
+	
+	
+	public List<Formation> selectFormationPasPayeeByParticipant(int id) {
+	
+		List<Formation> listeFormationPasPayees = new ArrayList<>();
+		
+		for(int i = 0 ; i < selectByIdParticipant(id).size() ; i++) {
+			if(paiementService.chercherReste(participantService.selectById(id), selectByIdParticipant(id).get(i))!=0) {
+				listeFormationPasPayees.add(selectByIdParticipant(id).get(i));
+			}
+		}
+		return listeFormationPasPayees;
 	}
 	
 }

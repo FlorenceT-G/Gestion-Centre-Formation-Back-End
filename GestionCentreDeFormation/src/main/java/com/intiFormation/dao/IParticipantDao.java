@@ -6,4 +6,5 @@ import com.intiFormation.entity.Participant;
 
 public interface IParticipantDao extends JpaRepository<Participant, Integer>{
 
+
 }

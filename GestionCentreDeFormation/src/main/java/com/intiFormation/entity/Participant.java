@@ -24,6 +24,7 @@ public class Participant extends Utilisateur {
 	@OneToMany(mappedBy = "participant")
 	private List<Relance> relances;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "participant")
 	private List<Paiement> paiements;
 	

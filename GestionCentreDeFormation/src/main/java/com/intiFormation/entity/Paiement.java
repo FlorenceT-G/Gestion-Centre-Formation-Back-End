@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Paiement {
 
@@ -23,7 +25,22 @@ public class Paiement {
 	@ManyToOne
 	@JoinColumn(name = "idParticipant")
 	private Participant participant;
+
+	@ManyToOne
+	@JoinColumn(name = "idFormation")
+	private Formation formation;
 	
+	
+	
+	
+	
+
+	public Formation getFormation() {
+		return formation;
+	}
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
 	public int getIdPaiement() {
 		return idPaiement;
 	}

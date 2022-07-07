@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Formation {
 	
@@ -35,6 +37,19 @@ public class Formation {
 	@JoinColumn(name = "idFormateur") // Mettre un CascadeType.ALL ou .PERSIST pour affecter formation à formateur
 	private Formateur formateur;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "formation")
+	private List<Paiement> paiements;
+	
+	
+	
+	
+	public List<Paiement> getPaiements() {
+		return paiements;
+	}
+	public void setPaiements(List<Paiement> paiements) {
+		this.paiements = paiements;
+	}
 	public int getIdFormation() {
 		return idFormation;
 	}

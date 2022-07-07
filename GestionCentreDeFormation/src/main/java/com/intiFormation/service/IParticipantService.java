@@ -16,5 +16,7 @@ public interface IParticipantService {
 	public void Modifier(Participant r);
 	
 	public void supprimer(int id);
+	
+	public List<Participant> chercherByPaiementNok();
 
 }

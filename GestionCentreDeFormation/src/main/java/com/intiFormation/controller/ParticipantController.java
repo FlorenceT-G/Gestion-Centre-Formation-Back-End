@@ -69,6 +69,12 @@ public class ParticipantController {
 		IpService.Modifier(p);
 	}
 	
+	@GetMapping("/participants-paiementsNok")
+	public List<Participant> afficherParticipantByPaiementNok()
+	{
+		return IpService.chercherByPaiementNok();
+	}
+	
 	
 	
 }
