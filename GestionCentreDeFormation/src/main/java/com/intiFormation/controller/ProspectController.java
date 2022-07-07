@@ -107,7 +107,7 @@ public class ProspectController {
 		IpService.Modifier(p);
 	}
 
-	@GetMapping("/csvFile")
+	@PostMapping("/csvFile")
 	public void csvReader(@RequestParam("file") MultipartFile file, @RequestParam("delimiter") String delimiter,
 			HttpSession session) {
 
@@ -116,7 +116,7 @@ public class ProspectController {
 		String path = session.getServletContext().getRealPath("/") + filename;
 		System.out.println(path); // Chemin dans lequel va être créé le fichier .csv
 
-		// List<Prospect> prospects = new ArrayList<>();
+		// List<Prospect> prospect = new ArrayList<>();
 		Scanner sc = null;
 		try {
 			byte TabBytes[] = file.getBytes();
