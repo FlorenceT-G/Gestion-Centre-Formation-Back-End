@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IParticipantService;
+import com.intiFormation.service.IProspectService;
 import com.intiFormation.service.IRoleService;
 
 
@@ -30,6 +31,9 @@ public class ParticipantController {
 	
 	@Autowired
 	IParticipantService IpService;
+	
+	@Autowired
+	IProspectService prospectService;
 	
 	@Autowired
 	BCryptPasswordEncoder bc;
@@ -46,14 +50,14 @@ public class ParticipantController {
 		
 		String username = p.getPrenom().substring(0,1) + p.getNom().trim();
 		username = username.replace(" ", "");
-		participant.setUsername(username);
+		participant.setUsername(username.toLowerCase());
 		participant.setAdresseMail(p.getEmail());
 		
 		participant.setPassword(bc.encode("1234"));
 		participant.setRole(roleService.checherById(5).get());
 		IpService.Ajouter(participant);
 		
-		System.out.println(participant.getIdUtilisateur());
+		prospectService.supprimer(p.getIdProspect());
 		
 		return participant.getIdUtilisateur();
 	}
