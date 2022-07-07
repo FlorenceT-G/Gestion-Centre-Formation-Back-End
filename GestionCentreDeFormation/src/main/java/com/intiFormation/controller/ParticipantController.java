@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Participant;
+import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IParticipantService;
 import com.intiFormation.service.IRoleService;
 
@@ -37,11 +38,21 @@ public class ParticipantController {
 	IRoleService roleService;
 	
 	@PostMapping("/participants")
-	public void inserer(@RequestBody Participant p)
+	public void inserer(@RequestBody Prospect p)
 	{
-		p.setPassword(bc.encode(p.getPassword()));
-		p.setRole(roleService.checherById(5).get());
-		IpService.Ajouter(p);
+		Participant participant = new Participant();
+		
+		participant.setNom(p.getNom());
+		participant.setPrenom(p.getPrenom());
+		
+		String username = p.getPrenom().substring(1) + p.getNom().trim();
+		username = username.replace(" ", "");
+		participant.setUsername(username);
+		participant.setAdresseMail(p.getEmail());
+		
+		participant.setPassword(bc.encode("1234"));
+		participant.setRole(roleService.checherById(5).get());
+		IpService.Ajouter(participant);
 	}
 
 	@GetMapping("/participants")

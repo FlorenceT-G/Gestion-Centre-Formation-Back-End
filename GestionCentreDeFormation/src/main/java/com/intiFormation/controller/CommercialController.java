@@ -22,7 +22,7 @@ import com.intiFormation.service.ICommercialService;
 import com.intiFormation.service.IRoleService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class CommercialController {
 	
 	@Autowired
@@ -53,7 +53,6 @@ public class CommercialController {
 	
 	@PostMapping("/admin/commerciaux")
 	public void ajouterCommercial(@RequestBody Commercial c) {
-		
 		c.setPassword(bc.encode(c.getPassword()));
 		c.setRole(roleService.checherById(3).get());
 		commercialService.ajouter(c);
@@ -70,7 +69,6 @@ public class CommercialController {
 	
 	@PutMapping("commercial/commerciaux")
 	public void modifier(@RequestBody Commercial c) {
-		
 		commercialService.modifier(c);
 		
 	}

@@ -46,5 +46,20 @@ public class MailController {
 		
 		return "E-Mail envoyé !";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/sendmail-inscription/{idParticipant")
+	public void mailInscription(@PathVariable("idParticipant") int idParticipant) {
+		Participant p = pService.selectById(idParticipant);
+		
+		SimpleMailMessage mssg = new SimpleMailMessage();
+		mssg.setTo(p.getAdresseMail());
+		mssg.setSubject("Inscription au Centre de Formation");
+		mssg.setText("Bonjour " + p.getNom() + " " + p.getPrenom() 
+		+ ", \nVeuillez trouver ci-dessous vos accès à la plateforme du centre de formation :"
+		+ "\nIdentifiant : "
+		+ "\nMot de passe : <span style='font-weight:bold;'>1234</span>"
+		+ "\n\nCordialement,\nL'équipe de formation.");
+	}
 
 }
