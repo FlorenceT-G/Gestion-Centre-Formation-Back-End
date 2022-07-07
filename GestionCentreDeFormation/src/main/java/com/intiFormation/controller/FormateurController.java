@@ -16,14 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formateur;
-import com.intiFormation.entity.Formation;
 import com.intiFormation.service.IFormateurService;
 import com.intiFormation.service.IFormationService;
 import com.intiFormation.service.IRoleService;
 
-
 @RestController
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
+// Pour que le formateur puisse modifier lui même son compte
 @CrossOrigin(origins = "http://localhost:4200")
 public class FormateurController {
 
@@ -37,29 +36,29 @@ public class FormateurController {
 	@Autowired
 	IFormationService formationService;
 	
-	@GetMapping("/formateur")
+	@GetMapping("/admin/formateur")
 	public List<Formateur> chercherTtFormateur() {
 		return formateurService.selectAll();
 	}
 	
-	@GetMapping("/formateur/{id}")
+	@GetMapping("/admin/formateur/{id}")
 	public Formateur chercherFormateur(@PathVariable("id") int id) {
 		return formateurService.selectById(id);
 	}
 	
-	@PostMapping("/formateur")
+	@PostMapping("/admin/formateur")
 	public void ajoutFormateur(@RequestBody Formateur f) {
 		f.setPassword(bc.encode(f.getPassword()));
 		f.setRole(roleService.checherById(4).get());
 		formateurService.ajouter(f);
 	}
 	
-	@PutMapping("/formateur")
+	@PutMapping("/formateur/formateur")
 	public void modificationFormateur(@RequestBody Formateur f) {
 		formateurService.ajouter(f);
 	}
 	
-	@DeleteMapping("/formateur/{id}")
+	@DeleteMapping("/admin/formateur/{id}")
 	public void supprimerFormateur(@PathVariable("id") int id) {
 		formateurService.supprimer(id);
 	}

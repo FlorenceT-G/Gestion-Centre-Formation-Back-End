@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Participant;
+import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IParticipantService;
 import com.intiFormation.service.IRoleService;
 
@@ -36,13 +37,32 @@ public class ParticipantController {
 	@Autowired
 	IRoleService roleService;
 	
+	@PostMapping("/participantsparprospect")
+	public Integer inserer(@RequestBody Prospect p) {
+		Participant participant = new Participant();
+		
+		participant.setNom(p.getNom());
+		participant.setPrenom(p.getPrenom());
+		
+		String username = p.getPrenom().substring(0,1) + p.getNom().trim();
+		username = username.replace(" ", "");
+		participant.setUsername(username);
+		participant.setAdresseMail(p.getEmail());
+		
+		participant.setPassword(bc.encode("1234"));
+		participant.setRole(roleService.checherById(5).get());
+		IpService.Ajouter(participant);
+		
+		System.out.println(participant.getIdUtilisateur());
+		
+		return participant.getIdUtilisateur();
+	}
+	
 	@PostMapping("/participants")
-	public void inserer(@RequestBody Participant p)
-	{
-		p.setPassword(bc.encode(p.getPassword()));
-		p.setRole(roleService.checherById(5).get());
+	public void insererParticipant(@RequestBody Participant p) {
 		IpService.Ajouter(p);
 	}
+	
 
 	@GetMapping("/participants")
 	public List<Participant> aff()

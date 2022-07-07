@@ -31,6 +31,8 @@ public class UtilisateurController {
 	
 	@PutMapping("/utilisateurs")
 	public void modify(@RequestBody Utilisateur utilisateur) {
+		System.out.println(utilisateur.getNom());
+		System.out.println(utilisateur.getRole().getIdRole());
 		uService.modifierUtilisateur(utilisateur);
 	}
 	
@@ -46,7 +48,6 @@ public class UtilisateurController {
 	
 	@GetMapping("/utilisateurs/{username}")
 	public Utilisateur selectByUsername(@PathVariable("username") String username) {
-		System.out.println(username);
 		return uService.chercherParUsername(username).get();
 	}
 	

@@ -2,13 +2,19 @@ package com.intiFormation.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Contact {
@@ -19,22 +25,18 @@ public class Contact {
 	private String compteRendu;
 	private LocalDate dateContact;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idProspect")
+	@JsonIgnore
 	private Prospect prospect;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idCommercial")
+	@JsonIgnore
 	private Commercial commercial;
-	
-
-	
 
 	public int getIdContact() {
 		return idContact;
-
-
-
 	}
 	public void setIdContact(int idContact) {
 		this.idContact = idContact;
