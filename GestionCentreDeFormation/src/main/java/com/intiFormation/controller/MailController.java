@@ -18,6 +18,7 @@ import com.intiFormation.service.ParticipantService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
+@RequestMapping("/assistant")
 public class MailController {
 	
 	@Autowired
@@ -57,9 +58,11 @@ public class MailController {
 		mssg.setSubject("Inscription au Centre de Formation");
 		mssg.setText("Bonjour " + p.getNom() + " " + p.getPrenom() 
 		+ ", \nVeuillez trouver ci-dessous vos accès à la plateforme du centre de formation :"
-		+ "\nIdentifiant : " + p.getUsername()
-		+ "\nMot de passe : <span style='font-weight:bold;'>1234</span>"
+		+ "\n<b>Identifiant</b> : " + p.getUsername()
+		+ "\n<b>Mot de passe</b> : 1234"
 		+ "\n\nCordialement,\nL'équipe de formation.");
+		
+		sender.send(mssg);
 	}
 
 }

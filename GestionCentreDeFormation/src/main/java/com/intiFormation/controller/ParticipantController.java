@@ -37,15 +37,14 @@ public class ParticipantController {
 	@Autowired
 	IRoleService roleService;
 	
-	@PostMapping("/participants")
-	public void inserer(@RequestBody Prospect p)
-	{
+	@PostMapping("/participantsparprospect")
+	public Integer inserer(@RequestBody Prospect p) {
 		Participant participant = new Participant();
 		
 		participant.setNom(p.getNom());
 		participant.setPrenom(p.getPrenom());
 		
-		String username = p.getPrenom().substring(1) + p.getNom().trim();
+		String username = p.getPrenom().substring(0,1) + p.getNom().trim();
 		username = username.replace(" ", "");
 		participant.setUsername(username);
 		participant.setAdresseMail(p.getEmail());
@@ -53,7 +52,17 @@ public class ParticipantController {
 		participant.setPassword(bc.encode("1234"));
 		participant.setRole(roleService.checherById(5).get());
 		IpService.Ajouter(participant);
+		
+		System.out.println(participant.getIdUtilisateur());
+		
+		return participant.getIdUtilisateur();
 	}
+	
+	@PostMapping("/participants")
+	public void insererParticipant(@RequestBody Participant p) {
+		IpService.Ajouter(p);
+	}
+	
 
 	@GetMapping("/participants")
 	public List<Participant> aff()
