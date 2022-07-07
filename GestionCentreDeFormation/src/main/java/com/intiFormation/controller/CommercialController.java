@@ -22,7 +22,6 @@ import com.intiFormation.service.ICommercialService;
 import com.intiFormation.service.IRoleService;
 
 @RestController
-@RequestMapping("/admin")
 @CrossOrigin(origins="http://localhost:4200")
 public class CommercialController {
 	
@@ -36,7 +35,7 @@ public class CommercialController {
 	IRoleService roleService;
 	
 	
-	@GetMapping("/commerciaux")
+	@GetMapping("/admin/commerciaux")
 	public List<Commercial> AfficherAssistant() {
 		
 		List<Commercial> liste = commercialService.getAll();
@@ -44,7 +43,7 @@ public class CommercialController {
 	}
 	
 	
-	@GetMapping("/commerciaux/{id}")
+	@GetMapping("/admin/commerciaux/{id}")
 	public Commercial chercherUn(@PathVariable("id") int id)
 	{
 		Commercial c = commercialService.getById(id).get();
@@ -52,7 +51,7 @@ public class CommercialController {
 	}
 	
 	
-	@PostMapping("/commerciaux")
+	@PostMapping("/admin/commerciaux")
 	public void ajouterCommercial(@RequestBody Commercial c) {
 		
 		c.setPassword(bc.encode(c.getPassword()));
@@ -61,7 +60,7 @@ public class CommercialController {
 	}
 	
 	
-	@DeleteMapping("/commerciaux/{id}")
+	@DeleteMapping("/admin/commerciaux/{id}")
 	public void supprimer(@PathVariable("id") int id)
 	{
 		commercialService.supprimer(id);
@@ -69,7 +68,7 @@ public class CommercialController {
 	}
 	
 	
-	@PutMapping("/commerciaux")
+	@PutMapping("commercial/commerciaux")
 	public void modifier(@RequestBody Commercial c) {
 		
 		commercialService.modifier(c);
