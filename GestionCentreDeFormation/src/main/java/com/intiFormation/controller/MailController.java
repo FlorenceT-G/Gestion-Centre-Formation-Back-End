@@ -1,5 +1,10 @@
 package com.intiFormation.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -70,17 +75,31 @@ public class MailController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/mailrelance/{idParticipant}/{idFormation}/{idPaiement}")
-	public void mailRelance(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation, @PathVariable("idPaiement") int idPaiement) {
+	@RequestMapping("/mailrelance/{idParticipant}/{idFormation}")
+	public void mailRelance(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation) {
+		
+		System.out.println("envoie mail relance");
+		
 		Participant p = pService.selectById(idParticipant);
 		Formation f = fService.selectById(idFormation).get();
-		Paiement py = pyService.selectById(idPaiement);
+		List<Paiement> lpy = pyService.selectByParticipant(idParticipant);
+		
+		List<Paiement> lPaiementsFormation = new ArrayList<Paiement>();
+		
+		for(Paiement paiement : lpy) {
+			if(paiement.getFormation().getIdFormation() == idFormation) {
+				lPaiementsFormation.add(paiement);
+			}
+		}
+		
+		Paiement paiementFormationEnCours = lPaiementsFormation.stream().max(Comparator.comparingInt(Paiement::getIdPaiement)).get();
 		
 		SimpleMailMessage mssg = new SimpleMailMessage();
 		mssg.setTo(p.getAdresseMail());
 		mssg.setSubject("Relance paiement");
 		mssg.setText("Bonjour " + p.getNom() + " " + p.getPrenom() 
-		+ ", \nVous vous êtes récemment"
+		+ ", \nIl vous reste actuellement " + paiementFormationEnCours.getReste() + "€ pour la formation : " + f.getLibFormation()
+		+ ".\nMerci de vous rendre sur votre compte de formation afin de procéder au paiement."
 		+ "\n\nCordialement,\nL'équipe de formation.");
 		
 		sender.send(mssg);

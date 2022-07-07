@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiFormation.dao.IParticipantDao;
 import com.intiFormation.entity.Relance;
+import com.intiFormation.service.IAssistantService;
+import com.intiFormation.service.IParticipantService;
 import com.intiFormation.service.IRelanceService;
 
 @RestController
@@ -21,10 +24,15 @@ public class RelanceController {
 	
 	@Autowired
 	IRelanceService IrService;
+	@Autowired
+	IAssistantService assistantService;
+	@Autowired
+	IParticipantService participantService;
 	
-	@PostMapping("/assistant/ajoutRelance")
-	public void inserer(@RequestBody Relance relance)
-	{
+	@PostMapping("/assistant/ajoutRelance/{idP}/{idA}")
+	public void inserer(@RequestBody Relance relance, @PathVariable("idP")int idParticipant, @PathVariable("idA") int idAssistant) {
+		relance.setAssistant(assistantService.getById(idAssistant).get());
+		relance.setParticipant(participantService.selectById(idParticipant));
 		IrService.Ajouter(relance);
 	}
 	
