@@ -48,7 +48,7 @@ public class MailController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/sendmail-inscription/{idParticipant")
+	@RequestMapping("/sendmailinscription/{idParticipant")
 	public void mailInscription(@PathVariable("idParticipant") int idParticipant) {
 		Participant p = pService.selectById(idParticipant);
 		
