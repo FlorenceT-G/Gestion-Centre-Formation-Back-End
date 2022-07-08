@@ -56,6 +56,4 @@ public class ParticipantService implements IParticipantService {
 		}
 		return listeParticipants;
 	}
-
-
 }
