@@ -23,7 +23,11 @@ public class Paiement {
 	private int montant;
 	private int reste;
 	
+<<<<<<< HEAD
 	@ManyToOne
+=======
+	@ManyToOne(cascade = CascadeType.MERGE)
+>>>>>>> 6ec5a40ad189da2ac53f76f66b7ce11e9d478de1
 	@JoinColumn(name = "idParticipant")
 	private Participant participant;
 

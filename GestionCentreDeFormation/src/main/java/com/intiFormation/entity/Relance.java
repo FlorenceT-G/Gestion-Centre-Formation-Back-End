@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Relance {
 	
@@ -18,10 +20,12 @@ public class Relance {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idParticipant")
+	@JsonIgnore
 	private Participant participant;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idAssistant")
+	@JsonIgnore
 	private Assistant assistant;
 	
 	

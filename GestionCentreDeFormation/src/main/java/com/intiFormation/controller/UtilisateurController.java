@@ -28,6 +28,7 @@ public class UtilisateurController {
 	
 	@Autowired
 	BCryptPasswordEncoder bc;
+	
 	@Autowired
 	IRoleService roleService;
 	
@@ -35,6 +36,8 @@ public class UtilisateurController {
 	public void insert(@RequestBody Utilisateur utilisateur) {
 		
 		utilisateur.setPassword(bc.encode(utilisateur.getPassword()));
+		utilisateur.setRole(roleService.checherById(1).get());
+
 		uService.nouvelUtilisateur(utilisateur);
 	}
 	
