@@ -24,7 +24,6 @@ import com.intiFormation.service.IRoleService;
 
 
 @RestController
-@RequestMapping("/assistant")
 @CrossOrigin(origins="http://localhost:4200")
 public class ParticipantController {
 	
@@ -37,7 +36,7 @@ public class ParticipantController {
 	@Autowired
 	IRoleService roleService;
 	
-	@PostMapping("/participantsparprospect")
+	@PostMapping("/assistant/participantsparprospect")
 	public Integer inserer(@RequestBody Prospect p) {
 		Participant participant = new Participant();
 		
@@ -58,38 +57,42 @@ public class ParticipantController {
 		return participant.getIdUtilisateur();
 	}
 	
-	@PostMapping("/participants")
+	@PostMapping("/assistant/participants")
 	public void insererParticipant(@RequestBody Participant p) {
+		
+		p.setPassword(bc.encode(p.getPassword()));
+		p.setRole(roleService.checherById(5).get());
 		IpService.Ajouter(p);
 	}
 	
 
-	@GetMapping("/participants")
+	@GetMapping("/assistant/participants")
 	public List<Participant> aff()
 	{
 		List<Participant> Liste=  IpService.GetAll();
 		return (Liste);
 	}
 	
-	@GetMapping("/participants/{id}")
+	@GetMapping("/assistant/participants/{id}")
 	public Participant selectid(@PathVariable("id") int id) {
 		Participant p =  IpService.selectById(id);
 		return (p);
 	}
 	
-	@DeleteMapping ("/participants/{id}")
+	@DeleteMapping ("/assistant/participants/{id}")
 	public void supp(@PathVariable("id") int id)
 	{
 		IpService.supprimer(id);
 	}
 	
-	@PutMapping("/participants")
+	@PutMapping("/participant")
 	public void update(@RequestBody Participant p)
 	{
+
 		IpService.Modifier(p);
 	}
 	
-	@GetMapping("/participants-paiementsNok")
+	@GetMapping("/assistant/participants-paiementsNok")
 	public List<Participant> afficherParticipantByPaiementNok()
 	{
 		return IpService.chercherByPaiementNok();

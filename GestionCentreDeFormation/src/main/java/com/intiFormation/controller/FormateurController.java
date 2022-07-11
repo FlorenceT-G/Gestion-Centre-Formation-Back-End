@@ -48,6 +48,7 @@ public class FormateurController {
 	
 	@PostMapping("/admin/formateur")
 	public void ajoutFormateur(@RequestBody Formateur f) {
+		
 		f.setPassword(bc.encode(f.getPassword()));
 		f.setRole(roleService.checherById(4).get());
 		formateurService.ajouter(f);
@@ -55,6 +56,7 @@ public class FormateurController {
 	
 	@PutMapping("/formateur/formateur")
 	public void modificationFormateur(@RequestBody Formateur f) {
+		
 		formateurService.ajouter(f);
 	}
 	

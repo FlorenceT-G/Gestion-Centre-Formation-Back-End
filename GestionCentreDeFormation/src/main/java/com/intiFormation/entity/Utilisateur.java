@@ -26,7 +26,7 @@ public class Utilisateur {
 	private String username;
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="idRole")
 	private Role role;
 	

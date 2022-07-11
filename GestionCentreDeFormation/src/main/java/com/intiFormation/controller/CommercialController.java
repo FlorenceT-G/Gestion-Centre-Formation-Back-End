@@ -53,6 +53,7 @@ public class CommercialController {
 	
 	@PostMapping("/admin/commerciaux")
 	public void ajouterCommercial(@RequestBody Commercial c) {
+		
 		c.setPassword(bc.encode(c.getPassword()));
 		c.setRole(roleService.checherById(3).get());
 		commercialService.ajouter(c);
@@ -69,6 +70,7 @@ public class CommercialController {
 	
 	@PutMapping("commercial/commerciaux")
 	public void modifier(@RequestBody Commercial c) {
+		
 		commercialService.modifier(c);
 		
 	}
