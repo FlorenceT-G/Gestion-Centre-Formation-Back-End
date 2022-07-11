@@ -46,6 +46,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+
 public class ParticipantController {
 
 	@Autowired
@@ -81,8 +82,12 @@ public class ParticipantController {
 		return participant.getIdUtilisateur();
 	}
 
+
 	@PostMapping("/assistant/participants")
 	public void insererParticipant(@RequestBody Participant p) {
+		
+		p.setPassword(bc.encode(p.getPassword()));
+		p.setRole(roleService.checherById(5).get());
 		IpService.Ajouter(p);
 	}
 
@@ -92,33 +97,42 @@ public class ParticipantController {
 		return (Liste);
 	}
 
+
 	@GetMapping("/assistant/participants/{id}")
 	public Participant selectid(@PathVariable("id") int id) {
 		Participant p = IpService.selectById(id);
 		return (p);
 	}
 
-	@DeleteMapping("/assistant/participants/{id}")
-	public void supp(@PathVariable("id") int id) {
+
+	@DeleteMapping ("/assistant/participants/{id}")
+	public void supp(@PathVariable("id") int id)
+	{
 		IpService.supprimer(id);
 	}
+	
+	
+	@PutMapping("/participant")
+	public void update(@RequestBody Participant p)
+	{
 
-	@PutMapping("/participants")
-	public void update(@RequestBody Participant p) {
 		IpService.Modifier(p);
 	}
+	
+	
+	@GetMapping("/assistant/participants-paiementsNok")
+	public List<Participant> afficherParticipantByPaiementNok()
+	{
 
-	@GetMapping("/participants-paiementsNok")
-	public List<Participant> afficherParticipantByPaiementNok() {
 		return IpService.chercherByPaiementNok();
 	}
 
 	/***
 	 * Avec itextpdf
 	 ***/
-	@RequestMapping("/participant/diplome/{idParticipant}/{idFormation}")
-	public void generatePDF(@PathVariable("idParticipant") int idParticipant,
-			@PathVariable("idFormation") int idFormation) {
+	@RequestMapping("/assistant/participant/diplome/{idParticipant}/{idFormation}")
+	public void pdf(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation) {
+
 		Formation f = formationService.selectById(idFormation).get();
 		Participant p = IpService.selectById(idParticipant);
 

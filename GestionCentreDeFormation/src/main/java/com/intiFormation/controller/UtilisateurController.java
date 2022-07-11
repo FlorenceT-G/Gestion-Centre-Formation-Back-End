@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Utilisateur;
+import com.intiFormation.service.IRoleService;
 import com.intiFormation.service.IUtilisateurService;
 
 @RestController
@@ -24,13 +26,24 @@ public class UtilisateurController {
 	@Autowired
 	IUtilisateurService uService;
 	
+	@Autowired
+	BCryptPasswordEncoder bc;
+	
+	@Autowired
+	IRoleService roleService;
+	
 	@PostMapping("/utilisateurs")
 	public void insert(@RequestBody Utilisateur utilisateur) {
+		
+		utilisateur.setPassword(bc.encode(utilisateur.getPassword()));
+		utilisateur.setRole(roleService.checherById(1).get());
+
 		uService.nouvelUtilisateur(utilisateur);
 	}
 	
 	@PutMapping("/utilisateurs")
 	public void modify(@RequestBody Utilisateur utilisateur) {
+		
 		System.out.println(utilisateur.getNom());
 		System.out.println(utilisateur.getRole().getIdRole());
 		uService.modifierUtilisateur(utilisateur);

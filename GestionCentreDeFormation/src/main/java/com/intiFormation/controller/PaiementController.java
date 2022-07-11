@@ -56,7 +56,7 @@ public class PaiementController {
 	}
 	
 	
-	@PostMapping("/assistant/paiement")
+	@PostMapping("/paiement")
 	public void ajoutPaiement(@RequestBody Paiement p) {
 		paiementService.ajouter(p);
 	}
