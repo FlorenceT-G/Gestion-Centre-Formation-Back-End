@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Utilisateur;
+import com.intiFormation.service.IRoleService;
 import com.intiFormation.service.IUtilisateurService;
 
 @RestController
@@ -24,8 +25,12 @@ public class UtilisateurController {
 	@Autowired
 	IUtilisateurService uService;
 	
+	@Autowired
+	IRoleService roleService;
+	
 	@PostMapping("/utilisateurs")
 	public void insert(@RequestBody Utilisateur utilisateur) {
+		utilisateur.setRole(roleService.checherById(1).get());
 		uService.nouvelUtilisateur(utilisateur);
 	}
 	
