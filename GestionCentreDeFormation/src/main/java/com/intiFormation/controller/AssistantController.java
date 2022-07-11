@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Assistant;
+import com.intiFormation.entity.Formation;
+import com.intiFormation.entity.Participant;
 import com.intiFormation.service.IAssistantService;
+import com.intiFormation.service.IFormationService;
+import com.intiFormation.service.IParticipantService;
 import com.intiFormation.service.IRoleService;
 
 @RestController	
@@ -30,6 +34,12 @@ public class AssistantController {
 	
 	@Autowired
 	IRoleService roleService;
+	
+	@Autowired
+	IParticipantService partService;
+	
+	@Autowired
+	IFormationService formService;
 	
 	@GetMapping("/admin/assistants")
 	public List<Assistant> AfficherAssistant() {
@@ -70,6 +80,21 @@ public class AssistantController {
 		
 		
 		assistantService.modifier(a);
+		
+	}
+	
+	@GetMapping("/assistant/inscrireParticipantFormation/{idUtilisateur}/{idFormation}")
+	public String inscrireParticipantAFormation(@PathVariable ("idUtilisateur") int idUtilisateur, @PathVariable ("idFormation") int idFormation) {
+		
+		Participant p = partService.selectById(idUtilisateur);
+		System.out.println(idUtilisateur);
+		Formation f = formService.selectById(idFormation).get();
+		System.out.println(idFormation);
+		
+		f.getListeParticipants().add(p);
+		p.getListeFormations().add(f);
+		
+		return "Affectation ok";
 		
 	}
 
