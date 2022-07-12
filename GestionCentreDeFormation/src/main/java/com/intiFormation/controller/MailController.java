@@ -54,7 +54,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/assistant")
 public class MailController {
 	
 	@Autowired
@@ -67,7 +66,7 @@ public class MailController {
 	PaiementService pyService;
 	
 	@ResponseBody
-	@RequestMapping("/sendmail/{idParticipant}/{idFormation}")
+	@RequestMapping("/assistant/sendmail/{idParticipant}/{idFormation}")
 	public String envoieMail(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation) {
 		
 		Participant p = pService.selectById(idParticipant);
@@ -87,7 +86,7 @@ public class MailController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/sendmailinscription/{idParticipant}")
+	@RequestMapping("/assistant/sendmailinscription/{idParticipant}")
 	public void mailInscription(@PathVariable("idParticipant") int idParticipant) {
 		Participant p = pService.selectById(idParticipant);
 		
@@ -104,7 +103,7 @@ public class MailController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/mailrelance/{idParticipant}/{idFormation}")
+	@RequestMapping("/assistant/mailrelance/{idParticipant}/{idFormation}")
 	public void mailRelance(@PathVariable("idParticipant") int idParticipant, @PathVariable("idFormation") int idFormation) {
 		
 		System.out.println("envoie mail relance");
@@ -222,6 +221,10 @@ public class MailController {
 	@RequestMapping("/participant/send-diplome-mail/{idParticipant}/{idFormation}")
 	public void sendDiploma(@PathVariable("idParticipant") int idParticipant,
 			@PathVariable("idFormation") int idFormation) {
+		
+		// références utilisées :
+		// https://javakapil.wordpress.com/2011/09/14/how-to-send-pdf-via-email-generated-from-itext/
+		// https://www.baeldung.com/spring-email
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -267,7 +270,7 @@ public class MailController {
 
 			// create the sender/recipient addresses
 			InternetAddress s = new InternetAddress(MailConstants.MY_EMAIL);
-			InternetAddress r = new InternetAddress("tgflorence890@gmail.com");
+			InternetAddress r = new InternetAddress(p.getAdresseMail());
 
 			// message
 			MimeMessage mimeMessage = new MimeMessage(session);

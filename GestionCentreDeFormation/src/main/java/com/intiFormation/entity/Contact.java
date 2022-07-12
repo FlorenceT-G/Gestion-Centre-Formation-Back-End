@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -25,7 +28,7 @@ public class Contact {
 	private String compteRendu;
 	private LocalDate dateContact;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne()
 	@JoinColumn(name = "idProspect")
 	@JsonIgnore
 	private Prospect prospect;

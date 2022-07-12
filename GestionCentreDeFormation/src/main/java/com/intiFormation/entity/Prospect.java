@@ -2,6 +2,7 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Prospect {
 	
 	private boolean aInscrire = false;
 	
-	@OneToMany(mappedBy = "prospect")
+	@OneToMany(mappedBy = "prospect", cascade = CascadeType.REMOVE)
 	private List<Contact> contacts; 
 	
 	public int getIdProspect() {
