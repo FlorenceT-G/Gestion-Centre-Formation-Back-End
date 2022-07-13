@@ -32,8 +32,7 @@ public class Participant extends Utilisateur {
 	
 	@OneToMany (mappedBy = "participant")
 	private List<Score> scores;
-	
-	
+
 	
 	public List<Formation> getListeFormations() {
 		return listeFormations;

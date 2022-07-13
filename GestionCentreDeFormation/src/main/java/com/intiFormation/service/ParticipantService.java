@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.intiFormation.dao.IParticipantDao;
 import com.intiFormation.entity.Formation;
 import com.intiFormation.entity.Participant;
+import com.intiFormation.entity.Quiz;
 
 @Service
 public class ParticipantService implements IParticipantService {
@@ -56,4 +57,8 @@ public class ParticipantService implements IParticipantService {
 		}
 		return listeParticipants;
 	}
+	
+	/*public List<Quiz> chercherListeQuizPasses(int idParticipant) {
+		
+	}*/
 }
