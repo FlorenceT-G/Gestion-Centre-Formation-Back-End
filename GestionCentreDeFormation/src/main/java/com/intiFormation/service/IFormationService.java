@@ -18,5 +18,6 @@ public interface IFormationService {
 	public List<Formation> FormationEnCours(List<Formation> listeFormations);
 	public List<Formation> HistoriqueFormation(List<Formation> listeFormations);
 	List<Formation> selectFormationPasPayeeByParticipant(int id);
+	public Formation selectByIdQuiz(int id);
 	
 }

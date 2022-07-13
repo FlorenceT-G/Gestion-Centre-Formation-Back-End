@@ -122,4 +122,8 @@ public class FormationService implements IFormationService{
 		return listeFormationPasPayees;
 	}
 	
+	public Formation selectByIdQuiz(int id) {
+		return formationDao.findBylisteQuiz_idQuiz(id);
+	}
+	
 }

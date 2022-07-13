@@ -85,4 +85,8 @@ public class FormationController {
 		return formationService.selectByIdFormateur(id);
 	}
 	
+	@GetMapping("/formationQuiz/{id}")
+	public Formation afficherFormationByQuiz(@PathVariable("id") int id) {
+		return formationService.selectByIdQuiz(id);
+	}
 }
