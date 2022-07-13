@@ -13,6 +13,7 @@ public class Score {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idScore;
+	
 	private float score;
 	
 	@ManyToOne
@@ -22,6 +23,10 @@ public class Score {
 	@ManyToOne
 	@JoinColumn(name = "idQuiz")
 	private Quiz quiz;
+	
+	
+	
+	
 
 	public int getIdScore() {
 		return idScore;
