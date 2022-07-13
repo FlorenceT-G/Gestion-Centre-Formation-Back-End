@@ -3,6 +3,7 @@ package com.intiFormation.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +28,7 @@ public class Formation {
 	private LocalDate dateFin;
 	private int cout;
 	
+	
 	@ManyToMany
 	@JoinTable(name="T_Formation_Participant",
 	joinColumns = @JoinColumn(name="idFormation"),
@@ -40,6 +42,9 @@ public class Formation {
 	@JsonIgnore
 	@OneToMany(mappedBy = "formation")
 	private List<Paiement> paiements;
+	
+	@OneToMany (mappedBy = "formation")
+	private List<Quiz> listeQuiz;
 	
 	
 	
@@ -89,6 +94,14 @@ public class Formation {
 	
 	
 	
+	
+	
+	public List<Quiz> getListeQuiz() {
+		return listeQuiz;
+	}
+	public void setListeQuiz(List<Quiz> listeQuiz) {
+		this.listeQuiz = listeQuiz;
+	}
 	public List<Participant> getListeParticipants() {
 		return listeParticipants;
 	}
@@ -108,6 +121,16 @@ public class Formation {
 	public Formation() {
 		super();
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Formation [idFormation=" + idFormation + ", libFormation=" + libFormation + ", description="
+				+ description + "]";
+	}
+	
+	
+	
 	
 	
 	

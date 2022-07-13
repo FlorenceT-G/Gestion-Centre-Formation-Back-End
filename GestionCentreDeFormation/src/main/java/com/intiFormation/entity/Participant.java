@@ -30,6 +30,9 @@ public class Participant extends Utilisateur {
 	@JsonIgnore
 	private List<Paiement> paiements;
 	
+	@OneToMany (mappedBy = "participant")
+	private List<Score> scores;
+	
 	
 	
 	public List<Formation> getListeFormations() {
@@ -52,9 +55,26 @@ public class Participant extends Utilisateur {
 	}
 	
 	
+	
+	
+	
+	public List<Score> getScores() {
+		return scores;
+	}
+	public void setScores(List<Score> scores) {
+		this.scores = scores;
+	}
 	public Participant() {
 		super();
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Participant [listeFormations=" + listeFormations + "]";
+	}
+	
+	
 	
 
 }

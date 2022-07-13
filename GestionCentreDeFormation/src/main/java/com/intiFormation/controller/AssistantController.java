@@ -93,6 +93,9 @@ public class AssistantController {
 		
 		f.getListeParticipants().add(p);
 		p.getListeFormations().add(f);
+		formService.ajouter(f);
+		partService.Ajouter(p);
+		System.out.println(p.getListeFormations());
 		
 		return "Affectation ok";
 		
