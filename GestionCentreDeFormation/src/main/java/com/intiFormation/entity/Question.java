@@ -22,9 +22,13 @@ public class Question {
 	
 	private int nbBonnesReponses;
 	
+	private String explication;
+	
 	@ManyToOne
 	@JoinColumn(name = "idQuiz")
 	private Quiz quiz;
+	
+	
 
 	public int getIdQuestion() {
 		return idQuestion;
@@ -69,6 +73,16 @@ public class Question {
 	public Question() {
 		super();
 	}
+
+	public String getExplication() {
+		return explication;
+	}
+
+	public void setExplication(String explication) {
+		this.explication = explication;
+	}
+	
+	
 	
 	
 	

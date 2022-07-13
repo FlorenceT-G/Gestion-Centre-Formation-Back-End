@@ -30,8 +30,11 @@ public class Participant extends Utilisateur {
 	@JsonIgnore
 	private List<Paiement> paiements;
 	
+	
 	@OneToMany (mappedBy = "participant")
 	private List<Score> scores;
+	
+	
 	
 	
 	
