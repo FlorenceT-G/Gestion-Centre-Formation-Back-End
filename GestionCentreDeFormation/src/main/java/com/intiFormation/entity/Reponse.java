@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reponse {
 	
@@ -18,6 +20,7 @@ public class Reponse {
 	
 	private boolean vrai;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idQuestion")
 	private Question question;

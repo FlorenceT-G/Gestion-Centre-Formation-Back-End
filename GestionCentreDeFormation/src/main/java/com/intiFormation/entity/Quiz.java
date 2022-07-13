@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Quiz {
 	
@@ -21,10 +23,12 @@ public class Quiz {
 	
 	private float pourcentage;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idFormation")
 	private Formation formation;
 	
+	@JsonIgnore
 	@OneToMany (mappedBy = "quiz")
 	private List<Score> scores;
 	

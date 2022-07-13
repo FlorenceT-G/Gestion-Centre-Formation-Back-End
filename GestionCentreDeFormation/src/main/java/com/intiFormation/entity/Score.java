@@ -13,8 +13,8 @@ public class Score {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idScore;
-	
 	private float score;
+	private float pourcentageVal;
 	
 	@ManyToOne
 	@JoinColumn(name = "idParticipant")
@@ -24,9 +24,13 @@ public class Score {
 	@JoinColumn(name = "idQuiz")
 	private Quiz quiz;
 	
-	
-	
-	
+	public float getPourcentageVal() {
+		return pourcentageVal;
+	}
+
+	public void setPourcentageVal(float pourcentageVal) {
+		this.pourcentageVal = pourcentageVal;
+	}
 
 	public int getIdScore() {
 		return idScore;
