@@ -47,9 +47,9 @@ public class QuestionController {
 	
 	
 	
-	@PostMapping("/questions")
-	public void ajouterQuestion(@RequestBody Question q) {
-		
+	@PostMapping("/questions/{idq}")
+	public void ajouterQuestion(@RequestBody Question q, @PathVariable("idq") int id) {
+		q.setQuiz(quizService.getById(id).get());
 		questionService.ajouter(q);
 	}
 	

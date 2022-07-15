@@ -27,8 +27,9 @@ public class ReponseController {
 	@Autowired
 	IQuestionService questionService;
 	
-	@PostMapping("formateur/reponses")
-	public void insertReponse(@RequestBody Reponse r) {
+	@PostMapping("formateur/reponses/{idq}")
+	public void insertReponse(@RequestBody Reponse r,@PathVariable("idq") int id) {
+		r.setQuestion(questionService.getById(id).get());
 		reponseService.ajouterReponse(r);
 	}
 	
