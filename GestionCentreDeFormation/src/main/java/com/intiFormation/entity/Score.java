@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Score {
 	
@@ -16,6 +18,7 @@ public class Score {
 	private float score;
 	private float pourcentageVal;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idParticipant")
 	private Participant participant;
