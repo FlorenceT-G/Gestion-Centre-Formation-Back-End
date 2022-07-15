@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Reponse;
+import com.intiFormation.service.IQuestionService;
 import com.intiFormation.service.IReponseService;
 
 @RestController
@@ -23,13 +24,18 @@ public class ReponseController {
 	@Autowired
 	IReponseService reponseService;
 	
+	@Autowired
+	IQuestionService questionService;
+	
 	@PostMapping("formateur/reponses")
 	public void insertReponse(@RequestBody Reponse r) {
 		reponseService.ajouterReponse(r);
 	}
 	
-	@PutMapping("formateur/reponses")
-	public void updateReponse(@RequestBody Reponse r) {
+	@PutMapping("formateur/reponses/{idq}")
+	public void updateReponse(@RequestBody Reponse r,@PathVariable("idq") int id) {
+		
+		r.setQuestion(questionService.getById(id).get());
 		reponseService.modifierReponse(r);
 	}
 	
