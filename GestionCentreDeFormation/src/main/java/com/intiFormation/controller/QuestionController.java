@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Question;
 import com.intiFormation.service.IQuestionService;
+import com.intiFormation.service.IQuizService;
 
 @RestController	
 @CrossOrigin("http://localhost:4200")
@@ -25,6 +26,8 @@ public class QuestionController {
 	@Autowired
 	IQuestionService questionService;
 	
+	@Autowired
+	IQuizService quizService;
 	
 	
 	@GetMapping("/questions")
@@ -59,9 +62,10 @@ public class QuestionController {
 	}
 	
 	
-	@PutMapping("/questions")
-	public void modifier(@RequestBody Question q) {
+	@PutMapping("/questions/{idq}")
+	public void modifier(@RequestBody Question q, @PathVariable("idq") int id) {
 		
+		q.setQuiz(quizService.getById(id).get());
 		questionService.modifier(q);
 		
 	}
