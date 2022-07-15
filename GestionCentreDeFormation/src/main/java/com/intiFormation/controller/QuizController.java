@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Quiz;
+import com.intiFormation.service.IFormationService;
 import com.intiFormation.service.IQuizService;
 
 @RestController	
@@ -21,7 +22,8 @@ import com.intiFormation.service.IQuizService;
 @RequestMapping("/formateur")
 public class QuizController {
 	
-	
+	@Autowired
+	IFormationService fService;
 	@Autowired
 	IQuizService quizService;
 	
@@ -43,10 +45,9 @@ public class QuizController {
 	
 	
 	
-	@PostMapping("/quiz")
-	public void ajouterQuiz(@RequestBody Quiz q) {
-		
-
+	@PostMapping("/quiz/{id}")
+	public void ajouterQuiz(@PathVariable("id") int id, @RequestBody Quiz q) {
+		q.setFormation(fService.selectById(id).get());
 		quizService.ajouter(q);
 	}
 	
